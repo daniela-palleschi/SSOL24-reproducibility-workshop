@@ -65,7 +65,7 @@ execute:
 ```{r}
 #| echo: false
 #| eval: false
-rbbt::bbt_update_bib(here::here("slides", "day1", "Rprojects", "rprojects.qmd"))
+rbbt::bbt_update_bib(here::here("slides", "day1", "rprojects.qmd"))
 ```
 
 

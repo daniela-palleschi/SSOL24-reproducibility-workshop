@@ -78,7 +78,7 @@ source(here::here("functions", "print_image.R"))
 #| echo: false
 #| eval: false
 # run manually
-rbbt::bbt_update_bib(here::here("slides", "day1", "reproducibility", "reproducibility.qmd"))
+rbbt::bbt_update_bib(here::here("slides", "day1", "reproducibility.qmd"))
 ```
 
 # Learning Objectives {.unnumbered .unlisted}
