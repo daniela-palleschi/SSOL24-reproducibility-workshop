@@ -19,19 +19,19 @@ website:
     style: "docked"
     search: true
     contents:
-      - index.qmd
-      - section: "Day 1: Introduction"
-        contents:
-          - slides/day1/reproducibility.qmd
-      - section: "Day 2: Project-oriented workflow"  
-        contents:
-          - slides/day2/rprojects.qmd
-      - section: "Day 3: Literate programming and Modularity"  
-        contents:
-          - slides/day3/repro-code.qmd
-      - section: "Day 4: Publishing and Peer Review"
-        contents:
-          - slides/day4/osf-code_review.qmd
+    - index.qmd
+      # - section: "Day 1: Introduction"
+      #   contents:
+      #     - slides/day1/reproducibility.qmd
+      # - section: "Day 2: Project-oriented workflow"  
+      #   contents:
+      #     - slides/day2/rprojects.qmd
+      # - section: "Day 3: Literate programming and Modularity"  
+      #   contents:
+      #     - slides/day3/repro-code.qmd
+      # - section: "Day 4: Publishing and Peer Review"
+      #   contents:
+      #     - slides/day4/osf-code_review.qmd
 
     # - references.qmd
 # 
