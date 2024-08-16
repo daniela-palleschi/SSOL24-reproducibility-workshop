@@ -1,0 +1,70 @@
+project:
+  type: website
+
+website:
+  title: "Open Science Practices for Linguistic Research: Reproducible Analyses in R (SSOL 2024 Workshop)"
+  twitter-card: true
+  navbar:
+    right:
+      - icon: home
+        href: https://daniela-palleschi.github.io/
+        text: D. Palleschi
+      - icon: github
+        href: https://github.com/daniela-palleschi/SSOL24-reproducibility-workshop
+        aria-label: Source Code
+      - icon: life-preserver
+        href: https://moodle.hu-berlin.de/course/view.php?id=127770
+        aria-label: Course Moodle
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - index.qmd
+      - section: "Day 1: Introduction"
+        contents:
+          - slides/day1/reproducibility.qmd
+      - section: "Day 2: Project-oriented workflow"  
+        contents:
+          - slides/day2/rprojects.qmd
+      - section: "Day 3: Literate programming and Modularity"  
+        contents:
+          - slides/day3/repro-code.qmd
+      - section: "Day 4: Publishing and Peer Review"
+        contents:
+          - slides/day4/osf-code_review.qmd
+
+    # - references.qmd
+# 
+# 
+  
+
+# bibliography: references.bib
+# csl: apa.csl
+
+crossref:
+  exm-prefix: ex.   # (default is "Figure")
+  # labels: alpha a        # (default is arabic)
+  # subref-labels: alpha t # (default is alpha a)
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    code-tools: true
+    css: styles.css
+    toc: true
+    include-after-body: custom.html
+    page-layout: full
+    self-contained: true
+execute:
+  eval: true
+  echo: true
+  message: false
+  error: false
+  warning: false
+  fig-align: "center"
+  fig-asp: .618
+
+
+
