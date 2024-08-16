@@ -1,0 +1,83 @@
+---
+csl: apa-cv.csl
+bibliography: references.bib
+suppress-bibliography: true
+link-citations: false
+citations-hover: false
+---
+
+# Workshop overview
+
+```{r}
+#| eval: false
+#| echo: false
+# https://www.andrewheiss.com/blog/2023/01/09/syllabus-csl-pandoc/#using-other-styles
+# run manually
+rbbt::bbt_update_bib(here::here("index.qmd"))
+```
+
+This web-book contains slides for the workshop 'Open Science Practices for Linguistic Research: Reproducible Analyses in R' given given by Daniela Palleschi at the [Summer School of Linguistics](https://ssol.ff.cuni.cz/) in Budweis, Czechia in August 2024. The tools discussed are specific to the R enviornment, but the concepts are universal and programming language agnostic. The materials are re-structured from a semester-length course on the same topic given at the Humboldt-Universität zu Berlin in the summer semester 2024, the materials for which are more exhaustive ([click here](https://daniela-palleschi.github.io/r4repro_SoSe2024/) to see course materials).
+
+Workshop abstract:
+
+> The Open Science movement began as an answer to the replication crisis and aims to encourage transparency across all stages of research. In this workshop, we will focus on practicing transparency in our analyses through reproducibility: what does it mean, why should we practice it, and how can we do it? We will focus on establishing and maintaining a reproducible, project-oriented workflow in the R environment. After the workshop, participants will be able to put reproducibility concepts and tools into practice, such as data management and documentation, R projects, and R packages developed specifically for reproducibility. The workshop assumes participants have at least basic familiarity with R and RStudio.
+
+## Schedule
+
+```{r}
+#| echo: false
+dplyr::tribble(
+  ~"Session", ~"Topic(s)",
+  "Day 1", "The state of reproducibility in linguistic research",
+  "Day 2", "(i) Setting up a reproducible project-oriented workflow <br> (ii) Implementing literate and modular analyses",
+  "Day 3", "Putting it into practice",
+  "Day 4", "(i) Publishing analyses<br> (ii) Conducting peer code review"
+) |> 
+  knitr::kable()
+```
+
+# Course preparation
+
+## Software (before Day 1)
+
+1. install or update R to version 4.4.0 (Puppy Cup, 2024-04-24)
+    + *Disclaimer*: updating R can interfere with on-going R projects you are currently working on, most notably because you will need to re-install packages (and thus you may be installing more recent package versions which may break existing code). If you are currently in the middle of analysing some data, you may not want to update R right now. In this case, just make note of which version you're currently running (e.g., by running `R.version` in the Console)
+    + having an R version from 2023 or later should suffice
+2. install or update RStudio
+    + I am currently using RStudio version 2023.12.1+402, as I encountered issues when updating to 2024.04.2+764 in April when it was released. As a rule of thumb, I update R and/or RStudio a few months after their initial release
+
+
+## Additional steps (before Day 4)
+
+Create an OSF account [here](https://osf.io/register) if you don't have one already
+
+## Suggested readings (before, during, or after the workshop)
+
+There is currently a wealth of literature on the topic of reproducibility, both in terms of meta-science reviews of rates of reproducibility and in terms of best-practice advice. Some reading I would suggest for a soft introduction into the latter would be:
+
+- @nagler_coding_1995
+- @bowers_how_2016
+- @wilson_good_2017
+
+For a book-length treatment of R-specific reproducible workflows:
+
+- @rodrigues_building_nodate
+
+And for an overview of R-specific data analysis suggestions, I recommend the following on-line resources:
+
+- @bryan_what_nodate
+- @bryan_chapter_nodate
+
+For more general discussions on Open Science Practices:
+
+- @kathawalla_easing_2021
+
+# How to navigate this website
+
+Each topic is listed in the sidebar in chronological order. Three output formats are available, all with the same content:
+
+1. HTML page
+2. PDF of content (sub-optimally formatted)
+3. RevealJS slides
+
+The contents were formatted for the slide output. Tables and figures may be too large/small in HTML and PDF format (especially the latter). Each page of the website presents the HTML format. The other 2 formats can be viewed by clicking on their symbol under 'Other Formats' (right sidebar).
