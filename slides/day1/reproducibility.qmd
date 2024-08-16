@@ -4,11 +4,9 @@ subtitle: "What, Why, and How?"
 author: "Daniela Palleschi"
 institute: "Humboldt-Universität zu Berlin"
 lang: en
-date: 2024-04-30
+date: 2024-08-21
 format: 
   html:
-    include-in-header:
-      file: functions/print_image.R
     output-file: reproducibility.html
     number-sections: false
     toc: true
@@ -16,16 +14,12 @@ format:
     code-tools: true
     self-contained: true
   pdf:
-    include-in-header:
-      file: functions/print_image.R
     output-file: reproducibility.pdf
     toc: true
     number-sections: false
     colorlinks: true
     code-overflow: wrap
   revealjs:
-    include-in-header:
-      file: functions/print_image_inverse.R
     footer: "SSOL 2024"
     output-file: reproducibility_slides.html
     code-overflow: wrap
