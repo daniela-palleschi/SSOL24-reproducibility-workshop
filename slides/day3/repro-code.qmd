@@ -5,6 +5,11 @@ author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
 lang: en
 date: 2024-08-23
+date-format: "ddd MMM D, YYYY"
+date-modified: last-modified
+language: 
+  title-block-published: "Workshop Day 3"
+  title-block-modified: "Last Modified"
 format: 
   html:
     output-file: repro_code.html
@@ -12,7 +17,7 @@ format:
     toc: true
     code-overflow: wrap
     code-tools: true
-    self-contained: true
+    embed-resources: false
   pdf:
     output-file: repro_code.pdf
     toc: true
@@ -42,7 +47,7 @@ format:
     fig-cap-location: top
     font-size: 0.6em
     slide-level: 4
-    self-contained: true
+    embed-resources: false
     fig-align: center
     fig-dpi: 300
 editor_options: 
@@ -114,13 +119,13 @@ read_csv(here("data", "my_data.csv"))
 library(readr)
 library(here)
 ```
-  
+
 ## Writing linear code
 
 - you need to load a package *before* you call a function from it
   + if we're just working in an R session, *before* means temporally prior
   + with linear code, *before* means higher up in the script
-- such pre-requisite code must 
+- such pre-requisite code must
     a. be present in the script
     b. appear above the first line of code that uses a function from this package
 - missing pre-requisite code might not throw an error message
@@ -130,11 +135,10 @@ library(here)
 
 ## Literate programming
 
-- introduced in 1992 by Donald Knuth [@Knuth_literate_1984]
+- introduced in @Knuth_literate_1984
 - refers to writing and documenting our code so that humans can understand it
   + important for us: we are (generally) not professional programmers, nor are our peers
 - we need to not only know what our code is doing when we look back at it in the future/share it
-
 - the easiest way: informative comments
   + the length and frequency of these comments is your choice
 
@@ -143,7 +147,7 @@ library(here)
 ```{markdown}
 #| eval: false
 #| echo: true
-#| code-fold: true
+#| code-fold: false
 #| code-summary: "Example"
 
 # Analysis script for phoneme paper
@@ -173,7 +177,7 @@ df_phon <- read_csv(here("data", "phoneme_tidy_data.csv"))
 
 - there are three hashtags after some headings (`###`)
   + this is helpful because it structures the outline of the document in RStudio
-  
+
 - the purpose of chunks of code are written above
   + description of specific lines of code are also given
 
@@ -186,6 +190,20 @@ df_phon <- read_csv(here("data", "phoneme_tidy_data.csv"))
     + can embed R code 'chunks' in a script, thus producing 'dynamic' reports
   + produce a variety of output files which contain text, R code chunks, and the code chunk outputs all in one
   
+::: {.content-visible when-format="revealjs"}
+{-}
+:::
+
+::: {.callout-note} 
+## Task: New Quarto document {.nonincremental}
+
+1. Navigate to `File > New file > Quarto document`
+2. Write some title, your name (Author), make sure 'Visual markdown Editor' is *unchecked*
+3. Click 'Create'
+4. A new tab will open in R Studio. Press the 'Render' button above the top of the document, you will be prompted to save the document. Store it in a folder called `scripts` and save it as `01-literate-programming.qmd`.
+5. What happens?
+:::
+  
 ## Structure your reports
 
 - describe the function/purpose at the beginning
@@ -196,21 +214,107 @@ df_phon <- read_csv(here("data", "phoneme_tidy_data.csv"))
 - it's wise to avoid very long, multi-purpose scripts
   - rule of thumb: one script per product or purpose
   + e.g., data cleaning, exploration, analysis, publiation figures, etc.
-
+  
 ## Session Information
 
 - R and R package versions are both open source, and are frequently updated
   + you might've run your code using `dplyr` version `1.1.0` or later, which introduced the `.by` per-operation grouping argument
-  + what happens when somebody who has an older version of `dplyr` tries to run your code? 
+  + what happens when somebody who has an older version of `dplyr` tries to run your code?
     + They won't be able to!
   + the reverse of this situation is more common:
     + a newer version of a package no longer supports a deprecated function or argument
-  
+
 ## Printing session info
 
-- so, print your session info at the end of every script!
+- so, print your session info at the end of every script:
+
+```{r}
+#| echo: true
+#| eval: false
+sessionInfo()
+```
+
+# Tips and tricks
+
+- when you start a new script make sure you *always* start with a clean R environment: `Session > Restart R` or `Cmd/Ctrl+Shift+0`
+  + this means no packages, data, functions, or any other dependencies are loaded
+- at the top of your script, always load packages required below
+  + you can always add more packages to the list as you add to your script
+- **Render often**: when you make changes to your script make sure you re-render your document
+  + checks you haven't introduced any errors
+  + easier to troubleshoot if smaller changes have been made
+- if you can run your script manually from source but it won't render, restart your R session and see if you can still run it from source
+  + often the problem is some dependency in your environment that is not linearly introduced in the script
+  
+# Session Info {-}
+
+My session info.
 
 ```{r}
 sessionInfo()
 ```
+
+# Hands-on: working with Quarto
+
+If you've never worked with Rmarkdown or Quarto before, try the following task. If you have, then try looking at a current or past analysis project you have, and check to see if it has the following:
+
+- a designated folder containing all required files
+- an `.RProj` file in this folder
+- a transparent and organised folder structure
+- a consistent and clear folder and file naming convention
+- a README file in the project folder, and any other large folders
+- code that runs if you try it
+
+::: {.callout-note collapse=true} 
+## Task: Editing your Quarto document {.nonincremental}
+
+1. In the `YAML` (meta document info between `---`):
+    - Change the title
+    - Add `date: "08/21/2024"` (MM/DD/YYYY format)
+    - Change `format: html` to the following:
+  
+```{markdown}
+format:
+  html:
+    toc: true
+```
+
+Render the document. If it works, continue. If not, check that you aren't missing any punctuation (e.g., quotation marks).
+
+2. Adding a heading and text
+    + Remove all text below the YAML.
+    + Add a heading `# Packages`
+    + Navigate two lines below your heading, and write `Install the tidyverse and here packages. This will not run when we render the script.`
+
+3. Adding a code chunk
+    + Navigate two lines below the text, and insert a new code chunk (either `Code > Insert Chunk` or the keyboard shortcut `Cmd+Option+I` on Mac or `Ctrl+Alt+I` on Windows)
+    + in the very first line of the code chunk, add `#| eval: false`
+    + below this line, write `# install packages`
+    + below this line, write `install.packages("tidyverse")` and hit `Cmd/Ctrl+Enter` and wait for the package to install (this may take some minutes)
+    + below this line, write `install.packages("here")` and hit `Cmd/Ctrl+Enter`
+
+3. Loading packages
+    + Add a new line of text: `Print the project directory filepath using the ```here``` package.`
+    + Insert a new code chunk two lines below the first code chunk
+    + below this line, write `# load packages`
+    + below this line, write `library(tidyverse)`
+    + below this line, write `library(here)`
+    + hit `Cmd/Ctrl+Shift+Enter`, or click the little green triangle at the top right of the chunk
+    
+4. Printing our project directory path
+    + In a new code chunk, add the comment `# print project directory` and the code `here()`
+
+5. Render the document
+:::
+
+:::{.callout-warning collapse=true}
+## Reveal Quarto syntax
+
+```{r echo = FALSE, comment = "", filename="Reveal correct code"}
+cat(readr::read_file(here::here("examples/literate-programming.qmd")))
+```
+:::
+
+
+
 

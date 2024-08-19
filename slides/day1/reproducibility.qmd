@@ -5,14 +5,21 @@ author: "Daniela Palleschi"
 institute: "Humboldt-Universität zu Berlin"
 lang: en
 date: 2024-08-21
+date-format: "ddd MMM D, YYYY"
+date-modified: last-modified
+language: 
+  title-block-published: "Workshop Day 1"
+  title-block-modified: "Last Modified"
 format: 
   html:
     output-file: reproducibility.html
-    number-sections: false
+    # include-in-header: ../../mathjax.html # for multiple
+    number-sections: true
+    number-depth: 2
     toc: true
     code-overflow: wrap
     code-tools: true
-    self-contained: true
+    embed-resources: false
   pdf:
     output-file: reproducibility.pdf
     toc: true
@@ -21,6 +28,7 @@ format:
     code-overflow: wrap
   revealjs:
     footer: "SSOL 2024"
+    include-in-header: ../../mathjax.html # for multiple
     output-file: reproducibility_slides.html
     code-overflow: wrap
     theme: [dark]
@@ -41,7 +49,7 @@ format:
     fig-cap-location: top
     font-size: 0.6em
     slide-level: 4
-    self-contained: true
+    embed-resources: false
     fig-align: center
     fig-dpi: 300
 editor_options: 
@@ -77,25 +85,275 @@ rbbt::bbt_update_bib(here::here("slides", "day1", "reproducibility.qmd"))
 
 Today we will learn about...
 
--   reproducibility rates in linguistics
--   FAIR principles
+-   what 'reproducibility' means in terms of data analysis
+-   FAIR principles for sharing our code and data
 -   concepts for building a reproducible workflow
 
-# Reproducibility
+# What is Open Science?
 
+> “Open science” is an umbrella term used to refer to the concepts of openness, transparency, rigor, reproducibility, replicability, and accumulation of knowledge, which are considered fundamental features of science”
+
+--- @cruwell_seven_2019, p.3
+
+- a movement developed to respond to crisis in scientific research
+  + lack of accessibility, transparency, reproducibility, and replicability of previous research
+- transparency is key to all facets of Open Science
+  + it allows for full evaluation of all stages of science
+  
+- Open Access, software, data, code, materials...
+
+## Systemic problem in science
+
+- the combination of
+  - publication bias
+    + journals favour novel, significant findings
+  - publish or perish
+    + researchers' careers depend on publications
+
+- can/does/did lead to:
+  - HARKing
+    + Hypothesising After Results are Known
+  - p-hacking
+    + (re-)running analyses until a significant effect is found
+  - replication crisis
+    + pervasive failure to replicate previous research
+  
+## Why do Open Science?
+
+::: columns
+
+::: {.column width="60%"}
+- open science is good science
+- it encourages organisation and planning
+  + helpful for future you
+- increases *transparency*
+  + without transparency we cannot inspect evidence ourselves
+  + or ensure the claims match the evidence
+
+- makes our work more robust
+  + so future work stands on solid ground
+
+- not all-or-nothing
+- there are things I consider the bare minimum
+  + detailed experiment plan, ideally public
+  + openly available materials (e.g., stimuli)
+  + share code and data
+
+- the important thing is to do what you can
+:::
+
+::: {.column width="40%"}
+```{r echo = F, fig.env = "figure", fig.align = "center", set.cap.width=T, fig.cap="Image source: @kathawalla_easing_2021 (all rights reserved)"}
+print_image(here::here("media/Kathawalla_research_cycle.png"))
+```
+
+:::
+
+:::
+
+::: {.content-hidden when-format="revealjs"}
+
+::: {.callout-note}
+## The replication crisis
+
+The *replication crisis* refers to the failure of many replication studies to replicate the findings of influential studies. The result of this "crisis" is a move towards Open Science Practices, which emphasise transparency along all stages of research (conception, planning, data collection, data cleaning, data analysis, reporting). 
+
+The issue became more widespread with the publication of @ioannidis_why_2005, entitled *Most published research findigns are false*. This paper defined bias in terms of design, analysis, and presentation factors with a focus on issues with *p*-values and statistical power. Since then there have been many replication attempts of influential (and lesser influential) papers. Strikingly, @open_science_collaboration_estimating_2015 reports 100 psychological studies run by 270 collaborators. They reported significant effects in only 36% of replications, with 47% of originally reported effects falling within 95% CIs of the replication effect. In essence: fewer significant findings and smaller effect sizes were found in replication studies compared to the original 100 studies [@fig-replication].
+
+```{r}
+#| echo: false
+#| out-width: "60%"
+#| label: fig-replication
+#| fig-cap: "Source: @open_science_collaboration_estimating_2015 (all rights reserved)"
+print_image(here::here("media/Open_Sci_collab_2015_replication-effects.png"))
+```
+:::
+
+:::
+
+# What is reproducibility?
+
+-   one piece of the Open Science pie
 -   generating the same results with the same data and analysis scripts
-
-    -   seems obvious, but requires organisation and forethought
-
+  -   seems obvious, but requires organisation and forethought before and during data collection/analysis
 -   bare minimum: share the code and the data [@laurinavichyute_share_2022]
 
--   rates of reproducibility vary across fields [@bochynska_reproducible_2023]
+## Reproducibility vs. replication
 
-    -   open access: 25-65%
-    -   data and analyses sharing: 11-33%
-    -   pre-registrations: 0-3%
+- the two terms have been used interchangably in the past [e.g., in the title of @open_science_collaboration_estimating_2015]
+  + we'll define them as follows (and this is becoming the standard distinction, imo)
 
--   what constitutes "reproducibility"?
+::: columns
+::: {.column width="50%"}
+### Reproducibility
+
+- re-analysing the same data using (ideally) the same scripts, software, etc
+- aim: produce the same results (means, model estimates, etc.)
+- why: tests for errors, coding mistakes, biases, etc.
+:::
+
+::: {.column width="50%"}
+
+### Replication
+
+- re-running a previous experiment, ideally with the same materials, set-up, etc. 
+- ideally the same analysis workflow as the original study would also be used (i.e., like reproducing the analyses but with new data)
+- aim: test whether results are replicated with new data in terms of direction and magnitude
+:::
+:::
+
+- in short:
+  - reproducibility = re-analyses of the *same data*
+  - replication = collection of *new data*
+
+# Why implement reproducibility in my workflow?
+
+- the replication crisis...
+
+# How to implement reproducibility?
+
+- think of the FAIR principles of data sharing
+  + apply them to sharing analyses as well
+
+## FAIR principles {.smaller}
+
+::: {.column width="100%"}
+-   guidelines for sharing digital resources
+-   refers broadly to data, but we'll consider it in terms of analyses
+:::
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| out-width: "95%"
+#| fig-align: center
+#| label: fig-FAIR
+#| fig-cap: "Source: [National Library of Medicine](https://www.nlm.nih.gov/oet/ed/cde/tutorial/02-300.html) (all rights reserved)"
+print_image(here::here("media/FAIR_nlm_nih.png"))
+```
+:::
+
+::: {.column width="60%"}
+-   findable and accesssible refer to where materials are stored
+    -   in *findable* repositories
+    -   that are *accessible*, i.e., do not require an account
+-   interoperable and reusable emphasise the format of data (and code)
+    -   the importance of future use
+    -   and use beyond your precise computational environment
+:::
+:::
+
+## Code review
+
+-   a great way to test the FAIR principles
+    -   code review!
+    -   i.e., have a colleague try to access your data/run your code
+        -   either via an online repository
+        -   or send them your project folder
+
+
+# Reproducibility spectrum
+
+- reproducibility is on a continuum, referred to as the *reproducibility spectrum* in @peng_reproducible_2011 (@fig-peng_2011)
+  + *linked* means "*all data, metadata, and code [is] stored and linked with each other and with corresponding publications*" [@peng_reproducible_2011, p. 1227]
+  + *executable* is not explained, and is more difficult to guarantee long-term as it depends on software versions
+  + but at minimum we can assume it refers to code running on someone else's machine
+
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: center
+#| label: fig-peng_2011
+#| fig-cap: "Source: @peng_reproducible_2011"
+print_image(here::here("media/peng_2011_reproducibility_spectrum.png"))
+```
+
+## Data and code availability {.smaller}
+
+::: columns
+::: {.column width="40%"}
+-   "data available upon (reasonable) request"
+    -   generally not true
+-   data was not available in 68% of the most cited psychology studies (2006-2016) [@hardwicke_populating_2018]
+    -   a further 18% were available with restrictions
+    -   only 11% available without restriction
+-   data alone is not sufficient
+    -   'Data Analysis' sections are rarely exhaustive/unambiguous
+    -   very difficult to re-create analyses without code
+    -   e.g., is data trimming explicitly defined?
+        -   this will even affect descriptive statistics
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| out-width: "75%"
+#| fig-align: center
+#| label: fig-hardwicke
+#| fig-cap: "Source: @hardwicke_populating_2018, p. 6 (all rights reserved)"
+print_image(here::here("media/Hardwicke_upon-request.png"))
+```
+:::
+:::
+
+### Data and code $\neq$ Reproducibility
+
+-   even including code does not guarantee reproducibility
+
+-   access to data and code do not mean analyses are reproducible
+
+-   what can go wrong? Examples from @laurinavichyute_share_2022
+
+::: columns
+::: {.column width="50%"}
+1.  Data problems
+    -   inaccessible data
+    -   incomplete data (e.g., 2/3 experiments)
+2.  Code problems
+    -   incomplete code
+    -   error messages
+    -   code rot: outdated syntax or environment
+    -   proprietary software
+:::
+
+::: {.column width="50%"}
+3.  Documentation problems
+    -   data difficult to interpret
+    -   no README file/data dictionary
+    -   unclear folder/file/variable naming convention
+    -   manuscript contradicts code
+4.  Unclear terms of use
+    -   no licence specification
+:::
+:::
+
+### Share the code, not just the data
+
+-   Why?
+    + key details are often missing from 'Methods' sections
+-   suggestions for researchers from @laurinavichyute_share_2022
+
+::: columns
+::: {.column width="50%"}
+1.  Share data in usable form
+    -   with pre-processing code
+2.  Use publicly accessible repositories
+    -   e.g., OSF
+3.  Use non-proprietary data formats
+    -   e.g., not `.xls` files (Excel)
+:::
+
+::: {.column width="50%"}
+4.  Provide documentation
+    -   e.g., README, data dictionaries
+5.  Share code *and* data
+    -   they estimate a 38% increase in reproducibility
+6.  Teach data management and computing skills
+    -   that's what this course is for!
+:::
+:::
+
 
 ## What should (ideally) be shared?
 
@@ -132,6 +390,13 @@ Today we will learn about...
     -   along with proper documentation of software used
 :::
 :::
+
+## Reproducibility rates of published works
+
+-   rates of reproducibility vary across fields [@bochynska_reproducible_2023]
+  -   open access: 25-65%
+  -   data and analyses sharing: 11-33%
+  -   pre-registrations: 0-3%
 
 ## Reproducibility rates in linguistic research {.smaller}
 
@@ -176,347 +441,25 @@ print_image(here::here("media/laurinavichyute_reproducibility.png"))
 -   but reproducibility rate ranged from 34-56%, depending on criteria
 -   higher rates compared to field-wide meta-analysis [@bochynska_reproducible_2023]
 
-# FAIR principles {.smaller}
-
-::: {.column width="100%"}
--   guidelines for sharing digital resources
--   refers broadly to data, but we'll consider it in terms of analyses
-:::
-
-::: columns
-::: {.column width="40%"}
-```{r}
-#| echo: false
-#| out-width: "95%"
-#| fig-align: center
-#| label: fig-FAIR
-#| fig-cap: "Source: [National Library of Medicine](https://www.nlm.nih.gov/oet/ed/cde/tutorial/02-300.html) (all rights reserved)"
-print_image(here::here("media/FAIR_nlm_nih.png"))
-```
-:::
-
-::: {.column width="60%"}
--   findable and accesssible refer to where materials are stored
-    -   in *findable* repositories
-    -   that are *accessible*, i.e., do not require an account
--   interoperable and reusable emphasise the format of data (and code)
-    -   the importance of future use
-    -   and use beyond your precise computational environment
--   a great way to test the FAIR principles
-    -   code review!
-    -   i.e., have a colleague try to access your data/run your code
-        -   either via an online repository
-        -   or send them your project folder
-:::
-:::
-
-## Findable {background-image="https://amor.cms.hu-berlin.de/~pallesid/teaching/404_error.png" background-opacity=".2"}
-
--   refers to data and supplementary materials
-
--   materials should have a "persistant identifier"
-
-    -   e.g., Digital Object Identifier (DOI) for scholarly articles
-
--   a digital, long-term storage of data
-
-    -   *not* on a personal or professional website
-    -   GitHub files don't typically have sufficient metadata
-    -   ideally: OSF, Zenodo or some other repository
-
--   in recent papers, an OSF link is typically provided
-
--   also: *discoverable*
-
-    -   e.g., in data-specific search engines (Google's Dataset search)
-
-## Accessible {background-image="https://amor.cms.hu-berlin.de/~pallesid/teaching/paywalled-research-screenshot.png" background-opacity=".2"}
-
--   data (and code) should be
-    -   machine- and human-readable
-    -   available on a trusted repository, e.g., the OSF
-    -   Open Access
-        -   not behind a paywall
-        -   nor require a login
-
-## Interoperable
-
-:::: {.columns}
-
-::: {.column width="60%"}
-
--   data (and code) should
-    -   not dependent on an operating system
-    -   nor entirely on software/package versions
--   easiest work around:
-    -   document your software versions
-    -   this doesn't automatically facilitate interoperability
-    -   but may help pinpoint where problems are coming from
-
-:::
-
-::: {.column width="40%"}
-```{r}
-#| echo: false
-#| out-width: "50%"
-magick::image_negate(magick::image_read(here::here("media/interoperable.png")))
-```
-:::
-
-::::
-
-## Reusable
-
-:::: {.columns}
-
-::: {.column width="60%"}
-
--   data (and code) should
-    -   be reusable for future research
--   data format should be generic
-    -   i.e., not tied to a specific program
-    -   for tabular data, I recommend `.csv` format
--   we can swap with 'reproducible' in the context of analyses
-
-:::
-
-::: {.column width="40%"}
-```{r}
-#| echo: false
-magick::image_read(here::here("media/recycle.png"))
-```
-:::
-
-::::
-
-## Task: finding data
-
-Go to [datasetsearch.research.google.com/](https://datasetsearch.research.google.com/)
-
--   do a search for data related to a topic of interest to you
-
--   what type of information does the search provide?
-
--   what type of links?
-
--   do you find analysis code, or just data?
-
--   do the same search at [osf.io](https://osf.io/)
-
--   and at [zenodo.org/](https://zenodo.org/)
-
-    -   are there the same amount of hits?
-
-# Data and code availability {.smaller}
-
-::: columns
-::: {.column width="40%"}
--   "data available upon (reasonable) request"
-    -   generally not true
--   data was not available in 68% of the most cited psychology studies (2006-2016) [@hardwicke_populating_2018]
-    -   a further 18% were available with restrictions
-    -   only 11% available without restriction
--   data alone is not sufficient
-    -   'Data Analysis' sections are rarely exhaustive/unambiguous
-    -   very difficult to re-create analyses without code
-    -   e.g., is data trimming explicitly defined?
-        -   this will even affect descriptive statistics
-:::
-
-::: {.column width="60%"}
-```{r}
-#| echo: false
-#| out-width: "75%"
-#| fig-align: center
-#| label: fig-hardwicke
-#| fig-cap: "Source: @hardwicke_populating_2018, p. 6 (all rights reserved)"
-print_image(here::here("media/Hardwicke_upon-request.png"))
-```
-:::
-:::
-
-## Data and code $\neq$ Reproducibility
-
--   even including code does not guarantee reproducibility
-
--   access to data and code do not mean analyses are reproducible
-
--   what can go wrong? Examples from @laurinavichyute_share_2022
-
-::: columns
-::: {.column width="50%"}
-1.  Data problems
-    -   inaccessible data
-    -   incomplete data (e.g., 2/3 experiments)
-2.  Code problems
-    -   incomplete code
-    -   error messages
-    -   code rot: outdated syntax or environment
-    -   proprietary software
-:::
-
-::: {.column width="50%"}
-3.  Documentation problems
-    -   data difficult to interpret
-    -   no README file/data dictionary
-    -   unclear folder/file/variable naming convention
-    -   manuscript contradicts code
-4.  Unclear terms of use
-    -   no licence specification
-:::
-:::
-
-## Share the code, not just the data
-
--   Why?
-    + key details are often missing from 'Methods' sections
--   suggestions for researchers from @laurinavichyute_share_2022
-
-::: columns
-::: {.column width="50%"}
-1.  Share data in usable form
-    -   with pre-processing code
-2.  Use publicly accessible repositories
-    -   e.g., OSF
-3.  Use non-proprietary data formats
-    -   e.g., not `.xls` files (Excel)
-:::
-
-::: {.column width="50%"}
-4.  Provide documentation
-    -   e.g., README, data dictionaries
-5.  Share code *and* data
-    -   they estimate a 38% increase in reproducibility
-6.  Teach data management and computing skills
-    -   that's what this course is for!
-:::
-:::
-
-# Building a reproducible workflow
-
--   there are different levels of reproducibility
-    -   the *bare minimum* is sharing the code and data
-    -   *and* including session information:
-        -   which operating system was used
-        -   which software/package versions were used
--   going bigger:
-    -   project-oriented workflow
-    -   project-specific filepaths
-    -   contained in a single project folder
--   we will be using RProjects to achieve this
-
-## Project management
-
--   folder structure
--   project-relative file paths
--   appropriate documentation
-    -   e.g., README
--   it's great to map out your project structure early on
-    -   but it will grow as you go along
-    -   reproducible principles facilitate adapting as it grows
-
-## Literate programming
-
-> Instead of imagining that our main task is to instruct a *computer* what to do, let us concentrate rather on explaining to *human beings* what we want a computer to do.
-
---- @Knuth_literate_1984, p. 97
-
-::: columns
-::: {.column width="100%"}
--   originally used to refer to writing programs
--   but also applies to analysis code
-    -   especially if we're aiming for reproducibility
-:::
-
-::: {.column width="50%"}
--   main concepts:
-
-    -   code is linear [this pre-dates @Knuth_literate_1984]
-    -   informative but concise commenting
-:::
-
-::: {.column width="50%"}
--   main benefits:
-
-    -   facilitates maintenance
-    -   helpful for future-you, collaborators, etc.
-:::
-:::
-
-## Documentation
-
--   metadata
-
-    -   project README
-    -   codebook/data dictionary
-
--   README should contain
-
-    -   a project description
-    -   relevant links
-    -   description of folder structure
-
--   can be updated as the project develops
-
--   README.md files in GitHub/Lab are automatically used as a project description
-
-    -   `.md` is a plaintext document
-    -   uses markdown syntax
-
-## Version control
-
--   git: local tracking
--   useful for the analysis and writing phases
-    -   but can be tricky for collaboration
--   GitHub/GitLab: remote tracking
-    -   store your changes to your local git repository
-    -   then push them to your remote repository
--   safe guards against local hardware/software issues
-    -   lost or damaged computer or local files
--   and allows for collaboration or sharing
-
-## Persistant (public) storage
-
--   GitHub/Lab are sub-optimal
-    -   developer-focused
-    -   typically lack thorough documentation/metadata
-    -   not very user-friendly for non-users
--   OSF, Zenodo
-    -   Open Science-focused
-    -   can be linked to a GitHub/Lab repository
-    -   facilitate thorough documentation
-    -   user-friendly
-
-## Writing
-
--   dynamic reports with Markdown syntax
-
-    -   e.g., Rmarkdown, Quarto
-    -   integration of data, code, and prose
-        -   facilitates cross-referencing within document
-        -   integration of citation management tools
-        -   supports LaTeX syntax for example sentences and tables
-
--   `papaja` package for APA-formatted Rmarkdown documents
-
--   challenge: collaboration
-
-    -   not all collaborators know these tools
-    -   track changes not currently possible
+# Steps we'll take
+
+1. Open source software: we'll use R, an open source statistical programming language
+    - in RStudio, an IDE (integrated developer environment)
+    - with [R Projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects)
+
+2. Project-oriented workflow: 
+    - establish folder structure
+    - and file/variable naming conventions
+    - use project-relative filepaths with the `here` package
     
+3. Practice literate programming:
+    - writing clean, commented, linear code
+    - in dynamic reports (e.g., Quarto, R markdown)
+    - practice modularity, i.e., 1 script = 1 purpose
 
-# Setting up a project
-
--   next week: hands-on
--   required installations/recent versions of:
-    -   R
-        -   version `4.4.0`, "Puppy Cup"
-        -   check current version with `R.version`
-        -   download/update: <https://cran.r-project.org/bin/macosx/>
-    -   RStudio
-        -   version `2023.12.1.402`, "Ocean Storm"
-        -   Help \> Check for updates
-        -   new install: <https://posit.co/download/rstudio-desktop/>
+4. Sharing and checking our code
+    - uploading our code and data to an OSF repository
+    - conducting a code review
 
 # Learning objectives 🏁 {.unnumbered .unlisted .uncounted}
 

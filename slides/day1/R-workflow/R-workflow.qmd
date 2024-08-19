@@ -1,0 +1,239 @@
+---
+title: "Building a reproducible workflow in R"
+subtitle: "Project-oriented workflow"
+author: "Daniela Palleschi"
+institute: "Humboldt-Universität zu Berlin"
+lang: en
+date: 2024-08-21
+date-format: "ddd MMM D, YYYY"
+date-modified: last-modified
+language: 
+  title-block-published: "Workshop Day 1"
+  title-block-modified: "Last Modified"
+format: 
+  html:
+    number-sections: true
+    number-depth: 2
+    toc: true
+    code-overflow: wrap
+    code-tools: true
+    embed-resources: false
+  pdf:
+    toc: true
+    number-sections: false
+    colorlinks: true
+    code-overflow: wrap
+  revealjs:
+    footer: "SSOL 2024"
+    include-in-header: ../../mathjax.html # for multiple
+    output-file: R-workflow_slides.html
+    code-overflow: wrap
+    theme: [dark]
+    width: 1600
+    height: 900
+    progress: true
+    scrollable: true
+    # smaller: true
+    slide-number: c/t
+    code-link: true
+    incremental: true
+    # number-sections: true
+    toc: false
+    toc-depth: 2
+    toc-title: 'Overview'
+    navigation-mode: linear
+    controls-layout: bottom-right
+    fig-cap-location: top
+    font-size: 0.6em
+    slide-level: 4
+    embed-resources: false
+    fig-align: center
+    fig-dpi: 300
+editor_options: 
+  chunk_output_type: console
+bibliography: references.bib
+csl: ../../../apa.csl
+---
+
+```{r setup, eval = T, echo = F}
+knitr::opts_chunk$set(echo = T, # print chunks?
+                      eval = T, # run chunks?
+                      error = F, # print errors?
+                      warning = F, # print warnings?
+                      message = F, # print messages?
+                      cache = F # cache?; be careful with this!
+                      )
+```
+
+```{r}
+#| echo: false
+source(here::here("functions", "print_image.R"))
+```
+
+
+```{r}
+#| echo: false
+#| eval: false
+# run manually
+rbbt::bbt_update_bib(here::here("slides", "day1", "R-workflow", "R-workflow.qmd"))
+```
+
+# Learning Objectives {.unnumbered .unlisted}
+
+Today we will learn...
+
+-   how to implement a project-oriented workflow in R
+-   how to organise folders and file names
+-   how to set up our first R project
+
+# Building a reproducible workflow in R
+
+- we now know some important principles of a reproducible workflow
+  + and that 'reproducibility' is not black-and-white
+  + but even the reproducibility spectrum is an oversimplification [@peng_reproducible_2011]
+
+- some additional resources that provide a list of tips include:
+  - @bowers_how_2016; @nagler_coding_1995; @wilson_good_2017; @corker_open_2022
+
+-   there are different levels of reproducibility
+    -   the *bare minimum* is sharing the code and data
+    -   *and* including session information:
+        -   which operating system was used
+        -   which software/package versions were used
+-   going bigger:
+    -   project-oriented workflow
+    -   project-specific filepaths
+    -   contained in a single project folder
+-   we will be using RProjects to achieve this
+
+## Project management
+
+-   folder structure
+-   project-relative file paths
+-   appropriate documentation
+    -   e.g., README
+-   it's great to map out your project structure early on
+    -   but it will grow as you go along
+    -   reproducible principles facilitate adapting as it grows
+
+## Literate programming
+
+> Instead of imagining that our main task is to instruct a *computer* what to do, let us concentrate rather on explaining to *human beings* what we want a computer to do.
+
+--- @Knuth_literate_1984, p. 97
+
+::: columns
+::: {.column width="100%"}
+-   originally used to refer to writing programs
+-   but also applies to analysis code
+    -   especially if we're aiming for reproducibility
+:::
+
+::: {.column width="50%"}
+-   main concepts:
+
+    -   code is linear [this pre-dates @Knuth_literate_1984]
+    -   informative but concise commenting
+:::
+
+::: {.column width="50%"}
+-   main benefits:
+
+    -   facilitates maintenance
+    -   helpful for future-you, collaborators, etc.
+:::
+:::
+
+## Documentation
+
+-   metadata
+    -   project README
+    -   codebook/data dictionary
+
+-   README should contain
+    -   a project description
+    -   relevant links
+    -   description of folder structure
+
+-   can be updated as the project develops
+
+-   README.md files in GitHub/Lab are automatically used as a project description
+    -   `.md` is a plain text document
+    -   uses markdown syntax
+
+## Version control (not covered in this workshop)
+
+-   git: local tracking
+-   useful for the analysis and writing phases
+    -   but can be tricky for collaboration
+-   GitHub/GitLab: remote tracking
+    -   store your changes to your local git repository
+    -   then push them to your remote repository
+-   safe guards against local hardware/software issues
+    -   lost or damaged computer or local files
+-   and allows for collaboration or sharing
+
+## Persistant (public) storage
+
+-   GitHub/Lab are sub-optimal
+    -   developer-focused
+    -   typically lack thorough documentation/metadata
+    -   not very user-friendly for non-users
+-   OSF, Zenodo
+    -   Open Science-focused
+    -   can be linked to a GitHub/Lab repository
+    -   facilitate thorough documentation
+    -   user-friendly
+
+## Writing (not covered in this workshop)
+
+-   dynamic reports with Markdown syntax
+
+    -   e.g., Rmarkdown, Quarto
+    -   integration of data, code, and prose
+        -   facilitates cross-referencing within document
+        -   integration of citation management tools
+        -   supports LaTeX syntax for example sentences and tables
+
+-   `papaja` package for APA-formatted Rmarkdown documents
+
+-   challenge: collaboration
+
+    -   not all collaborators know these tools
+    -   track changes not currently possible
+
+
+# Setting up a project
+
+-   tomorrow: hands-on
+-   required installations/recent versions of:
+    -   R
+        -   version `4.4.0`, "Puppy Cup"
+        -   check current version with `R.version`
+        -   download/update: <https://cran.r-project.org/bin/macosx/>
+    -   RStudio
+        -   version `2023.12.1.402`, "Ocean Storm"
+        -   Help \> Check for updates
+        -   new install: <https://posit.co/download/rstudio-desktop/>
+
+# Learning objectives 🏁 {.unnumbered .unlisted .uncounted}
+
+Today we learned...
+
+-   reproducibility rates in linguistics ✅
+-   FAIR principles ✅
+-   concepts for building a reproducible workflow ✅
+
+# References {.unlisted .unnumbered visibility="uncounted"}
+
+---
+nocite: |
+---
+
+::: {#refs custom-style="Bibliography"}
+:::
+
+
+
+
+

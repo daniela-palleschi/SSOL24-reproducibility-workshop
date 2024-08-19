@@ -5,6 +5,11 @@ author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
 lang: en
 date: 2024-08-22
+date-format: "ddd MMM D, YYYY"
+date-modified: last-modified
+language: 
+  title-block-published: "Workshop Day 2"
+  title-block-modified: "Last Modified"
 format: 
   html:
     output-file: rprojects.html
@@ -12,7 +17,7 @@ format:
     toc: true
     code-overflow: wrap
     code-tools: true
-    self-contained: true
+    embed-resources: false
   pdf:
     output-file: rprojects.pdf
     toc: true
@@ -43,7 +48,7 @@ format:
     fig-cap-location: top
     font-size: 0.6em
     slide-level: 4
-    self-contained: true
+    embed-resources: false
     fig-align: center
     fig-dpi: 300
 editor_options: 
@@ -67,7 +72,7 @@ Today we will...
 
 -   learn about project-oriented workflows
 -   create an RProject
--   establish a self-contained project environment with `here`
+-   use project-relative filepaths with the `here` package
 
 # Installation requirements
 
@@ -97,7 +102,7 @@ Today we will...
   + have a sensible folder structure
   + avoid mixing subfolders and files
     + i.e., if a folder contains subfolders, ideally it should not contain files
-  
+
 # RProjects
 
 - in data analysis, using an IDE is beneficial
@@ -121,13 +126,13 @@ Today we will...
   + somewhere that makes sense, e.g., a folder called `SoSe2024` or `Mastersarbeit`
 - how?
   + `File > New Project > New Directory > New Project > [Directory name] > Create Project`
-  
+
 ### {.unnumbered .unlisted}
 
 ::: {.callout-tip}
 # New RProject
 
-Create a new RProject for this course
+Create a new RProject for this workshop
 
   + `File > New Project > New Directory > New Project > [Directory name] > Create Project`
   + make sure you choose a sensible location
@@ -183,7 +188,7 @@ knitr::include_graphics(here::here("media", "RStudio_global-options.png"))
 - `Tools > Global Options`
   + **Workspace**: Restore .RData into workspace at startup: NO
   + Save workspace to .RData on exit: Never
-  
+
 - this will ensure that you are always starting with a clean slate
   + and that your code is not dependent on some pacakge or object you created in another session
 - this is also how RMarkdown and Quarto scripts run
@@ -199,8 +204,8 @@ knitr::include_graphics(here::here("media", "RStudio_global-options.png"))
 ::: {.callout-tip}
 ## Global settings
 
-Change your Global Options so that 
-  
+Change your Global Options so that
+
   + **Workspace**: Restore .RData into workspace at startup: NO
   + Save workspace to .RData on exit: Never
 :::
@@ -266,7 +271,7 @@ knitr::include_graphics(here::here("media", "rproject_spot-the-diffs.png"))
 ::: {.callout-tip}
 ## New script
 
-Create a new Quarto script: 
+Create a new Quarto script:
 
 1. `File > New File > Quarto Document`
 3. Add a title
