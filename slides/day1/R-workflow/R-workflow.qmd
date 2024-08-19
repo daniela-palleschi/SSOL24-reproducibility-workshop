@@ -95,6 +95,8 @@ Today we will learn...
 - some additional resources that provide a list of tips include:
   - @bowers_how_2016; @nagler_coding_1995; @wilson_good_2017; @corker_open_2022
 
+## Broadening the reproducibilty spectrum
+
 -   there are different levels of reproducibility
     -   the *bare minimum* is sharing the code and data
     -   *and* including session information:
@@ -220,9 +222,9 @@ Today we will learn...
 
 Today we learned...
 
--   reproducibility rates in linguistics ✅
--   FAIR principles ✅
--   concepts for building a reproducible workflow ✅
+-   how to implement a project-oriented workflow in R ✅
+-   how to organise folders and file names ✅
+-   how to set up our first R project ✅
 
 # References {.unlisted .unnumbered visibility="uncounted"}
 
