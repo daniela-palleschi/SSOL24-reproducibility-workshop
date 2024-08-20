@@ -13,7 +13,7 @@ Teaching materials for the 4-day workshop 'Open Science Practices for Linguistic
 
 `data/`
 
-  - `lacina_et-al_2023_English_final.csv` example self-paced reading dataset*
+  - `chromy_et-al_2023_English_final.csv` example self-paced reading dataset*
 
 \*[L1 English experiment](https://osf.io/2kjy5/) dataset from:
 
