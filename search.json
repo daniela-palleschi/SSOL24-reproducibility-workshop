@@ -11,7 +11,7 @@
     "href": "slides/day1/R-workflow/R-workflow.html",
     "title": "Building a reproducible workflow in R",
     "section": "",
-    "text": "Today we will learn…\n\nhow to implement a project-oriented workflow in R\nhow to organise folders and file names\nhow to set up our first R project",
+    "text": "Today we will learn…\n\nabout reproducibility practices beyond sharing code and data\nabout project-oriented workflows\nwhat we will cover in this workshop",
     "crumbs": [
       "D. Palleschi",
       "Day 1: Introduction to reproducibility",
@@ -35,7 +35,7 @@
     "href": "slides/day1/R-workflow/R-workflow.html#project-management",
     "title": "Building a reproducible workflow in R",
     "section": "1.2 Project management",
-    "text": "1.2 Project management\n\nfolder structure\nproject-relative file paths\nappropriate documentation\n\ne.g., README\n\nit’s great to map out your project structure early on\n\nbut it will grow as you go along\nreproducible principles facilitate adapting as it grows",
+    "text": "1.2 Project management\n\nfolder structure\nproject-relative file paths\nappropriate documentation\n\ne.g., README\n\nit’s great to map out your project structure early on\n\nbut it will grow as you go along\nreproducible principles facilitate adapting as it grows\n\n\n\nNaming conventions\n\nthere are some “rules” for naming files and folders\n\nThe Turing Way: Naming files, folders, and other things\nJenny Bryan: naming things (Reproducible Science Workshop 2015)\n\n\n\n\n\nAvoid special characters\n\nensures machine readability\n\nMake names concise but meaningful\n\nensures human-readability\n\nAvoid spaces\n\ntry CamelCase, snake case (snake_case), or skewer case (skewer-case)\nor use hyphens (-) to separate chunks, and underscores (_) to connect words of the same chunk\n\n\n\n\nConsider default ordering\n\ne.g., with dates: YYYY-MM-DD\nwith folders or files: numerical prefixes (e.g., 01-data_cleaning.R, 02-data_visualisation.R)\n\nBe consistent",
     "crumbs": [
       "D. Palleschi",
       "Day 1: Introduction to reproducibility",
@@ -820,6 +820,13 @@
     "text": "Opening a Project\n\nto open a project, locate its .Rproj file and double-click\nor if you’re already in RStudio, you can use the Project (None) drop-down (top right)\n\n\n\n\n\n\n\nFigure 1: Double-click .Rproj\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Open from RStudio"
   },
   {
+    "objectID": "slides/day2/rprojects_slides.html#adding-a-readme-file",
+    "href": "slides/day2/rprojects_slides.html#adding-a-readme-file",
+    "title": "RProjects",
+    "section": "Adding a README file",
+    "text": "Adding a README file\n\n\nFile &gt; New File &gt; Markdown File (not R Markdown!)\n\nadd some text describing the purpose of this project\ninclude your name, the date\nuse Markdown formatting (e.g., # for headings, *italics*, **bold**)\n\n\nsave as README.md in your project directory"
+  },
+  {
     "objectID": "slides/day2/rprojects_slides.html#global-rstudio-options",
     "href": "slides/day2/rprojects_slides.html#global-rstudio-options",
     "title": "RProjects",
@@ -834,25 +841,11 @@
     "text": "Global settings\n\n\nChange your Global Options so that\n\n\nWorkspace: Restore .RData into workspace at startup: NO\nSave workspace to .RData on exit: Never"
   },
   {
-    "objectID": "slides/day2/rprojects_slides.html#spot-the-differences",
-    "href": "slides/day2/rprojects_slides.html#spot-the-differences",
+    "objectID": "slides/day2/rprojects_slides.html#identifying-your-rproject",
+    "href": "slides/day2/rprojects_slides.html#identifying-your-rproject",
     "title": "RProjects",
-    "section": "Spot the differences",
-    "text": "Spot the differences\n\n\n\n\n\n\nFigure 4: RStudio Session A\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: RStudio Session B"
-  },
-  {
-    "objectID": "slides/day2/rprojects_slides.html#spot-the-differences-rproject-vs.-none",
-    "href": "slides/day2/rprojects_slides.html#spot-the-differences-rproject-vs.-none",
-    "title": "RProjects",
-    "section": "Spot the differences: RProject vs. None",
-    "text": "Spot the differences: RProject vs. None"
-  },
-  {
-    "objectID": "slides/day2/rprojects_slides.html#folder-structure-1",
-    "href": "slides/day2/rprojects_slides.html#folder-structure-1",
-    "title": "RProjects",
-    "section": "Folder structure",
-    "text": "Folder structure\n\nsome folders you’ll typically want to have:\n\n\ndata: containing your dataset(s)\n\nscripts (or analyses, etc.): containing any analysis scripts\n\nmanuscript: containing any write-ups of your results\n\nmaterials: containing relevant experiment materials (e.g., stimuli)\n\n\nlet’s just create the first 2 (data and scripts)"
+    "section": "Identifying your RProject",
+    "text": "Identifying your RProject\n\nthere are a ways to check which (if any) RProject you’re in\n\nthere are 6 differences between Figure 4 and Figure 5\n\nwhich is in an RProject session?\n\n\n\n\n\nSpot the differences\nShow the differences\n\n\n\n\n\n\n\n\n\nFigure 4: RStudio Session A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: RStudio Session B"
   },
   {
     "objectID": "slides/day2/rprojects_slides.html#the-problem-with-setwd",
@@ -880,14 +873,14 @@
     "href": "slides/day2/rprojects_slides.html#herehere",
     "title": "RProjects",
     "section": "here::here()",
-    "text": "here::here()\n\ninstall package\n\n\n\n\nIn the Console\n\ninstall.packages(\"here\")\n\n\n\nload package and call the here function\n\n\n# load package\nlibrary(here)\n\n# read in data\ndf_data &lt;- read.csv(here(\"data\", \"data_lifetime_pilot.csv\"))\n\n\nor directly call the here function without loading the package\n\n\n# read in data without loading here\ndf_data &lt;- read.csv(here::here(\"data\", \"data_lifetime_pilot.csv\"))"
+    "text": "here::here()\n\ninstall package\n\n\n\n\nIn the Console\n\ninstall.packages(\"here\")\n\n\n\nload package and call the here function\n\n\n# load package\nlibrary(here)\n\n# read in data\ndf_data &lt;- read.csv(here(\"data\", \"data_lifetime_pilot.csv\"))\n\n\nor directly call the here function without loading the package\n\n\n# read in data without loading here\ndf_data &lt;- read.csv(here::here(\"data\", \"data_lifetime_pilot.csv\"))\n\n\nnot that I stored the data with the prefix df_\n\n\ndf stands for dataframe\n\n\nI recommend using object-type defining prefixes for all objects in your Environment\n\ne.g., fit_ for models, fig_ for figures, sum_ for summaries, tbl_ for tables, etc."
   },
   {
     "objectID": "slides/day2/rprojects_slides.html#section-4",
     "href": "slides/day2/rprojects_slides.html#section-4",
     "title": "RProjects",
     "section": "",
-    "text": "Reproduce your analysis\n\n\n\nMake sure you save your script, then close your Rproject.\nRe-open the project. Can you re-run the script?"
+    "text": "Reproduce your analysis\n\n\n\nPerform some data exploration (e.g., with names(), summary(), dplyr::glimpse(), whatever you typically do)\nSave your script, then close RStudio/your Rproject.\nRe-open the project. Can you re-run the script?"
   },
   {
     "objectID": "slides/day2/rprojects.html",
@@ -918,6 +911,13 @@
     "text": "Opening a Project\n\nto open a project, locate its .Rproj file and double-click\nor if you’re already in RStudio, you can use the Project (None) drop-down (top right)\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Double-click .Rproj\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Open from RStudio"
   },
   {
+    "objectID": "slides/day2/rprojects.html#adding-a-readme-file",
+    "href": "slides/day2/rprojects.html#adding-a-readme-file",
+    "title": "RProjects",
+    "section": "Adding a README file",
+    "text": "Adding a README file\n\nFile &gt; New File &gt; Markdown File (not R Markdown!)\n\nadd some text describing the purpose of this project\ninclude your name, the date\nuse Markdown formatting (e.g., # for headings, *italics*, **bold**)\n\nsave as README.md in your project directory"
+  },
+  {
     "objectID": "slides/day2/rprojects.html#global-rstudio-options",
     "href": "slides/day2/rprojects.html#global-rstudio-options",
     "title": "RProjects",
@@ -932,25 +932,11 @@
     "text": "Global settings\n\n\n\nChange your Global Options so that\n\nWorkspace: Restore .RData into workspace at startup: NO\nSave workspace to .RData on exit: Never"
   },
   {
-    "objectID": "slides/day2/rprojects.html#spot-the-differences",
-    "href": "slides/day2/rprojects.html#spot-the-differences",
+    "objectID": "slides/day2/rprojects.html#identifying-your-rproject",
+    "href": "slides/day2/rprojects.html#identifying-your-rproject",
     "title": "RProjects",
-    "section": "Spot the differences",
-    "text": "Spot the differences\n\n\n\n\n\n\n\n\n\n\nFigure 4: RStudio Session A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: RStudio Session B"
-  },
-  {
-    "objectID": "slides/day2/rprojects.html#spot-the-differences-rproject-vs.-none",
-    "href": "slides/day2/rprojects.html#spot-the-differences-rproject-vs.-none",
-    "title": "RProjects",
-    "section": "Spot the differences: RProject vs. None",
-    "text": "Spot the differences: RProject vs. None"
-  },
-  {
-    "objectID": "slides/day2/rprojects.html#folder-structure-1",
-    "href": "slides/day2/rprojects.html#folder-structure-1",
-    "title": "RProjects",
-    "section": "Folder structure",
-    "text": "Folder structure\n\nsome folders you’ll typically want to have:\n\ndata: containing your dataset(s)\nscripts (or analyses, etc.): containing any analysis scripts\nmanuscript: containing any write-ups of your results\nmaterials: containing relevant experiment materials (e.g., stimuli)\n\nlet’s just create the first 2 (data and scripts)\n\n\ndata/\n\ndo you have “raw”, i.e., pre-processed data?\n\nif so, you might want to create a raw sub-folder\nand any other relevant sub-folders (e.g., processed or tidy)\n\ndownload the dataset on this week’s Moodle section\n\nor, move a dataset of your own to this folder\n\n\n\n\nscripts/\n\ntry to create a single script for each “product”\n\ne.g., anonymised data, ‘cleaned’ data, data exploration, visualisation, analyses, etc.\n\nyou can create sub-folders as the project develops and move scripts around\n\nfor now, let’s create a new script to take a look at our data\n\n\n\n\n\n\n\n\n\n\n\nNew script\n\n\n\nCreate a new Quarto script:\n\nFile &gt; New File &gt; Quarto Document\nAdd a title\nUncheck the Use Visual Editor box\nClick Create\nSave it in your scripts/ folder: File &gt; Save as...\n\n\n\n\n\nLoad in the data\n\nload in the data however you normally would\n\ne.g., readr::read_csv()"
+    "section": "Identifying your RProject",
+    "text": "Identifying your RProject\n\nthere are a ways to check which (if any) RProject you’re in\n\nthere are 6 differences between Figure 4 and Figure 5\nwhich is in an RProject session?\n\n\n\nSpot the differencesShow the differences\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: RStudio Session A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: RStudio Session B"
   },
   {
     "objectID": "slides/day2/rprojects.html#the-problem-with-setwd",
@@ -978,14 +964,14 @@
     "href": "slides/day2/rprojects.html#herehere",
     "title": "RProjects",
     "section": "here::here()",
-    "text": "here::here()\n\ninstall package\n\n\n\n\nIn the Console\n\ninstall.packages(\"here\")\n\n\n\nload package and call the here function\n\n\n# load package\nlibrary(here)\n\n# read in data\ndf_data &lt;- read.csv(here(\"data\", \"data_lifetime_pilot.csv\"))\n\n\nor directly call the here function without loading the package\n\n\n# read in data without loading here\ndf_data &lt;- read.csv(here::here(\"data\", \"data_lifetime_pilot.csv\"))"
+    "text": "here::here()\n\ninstall package\n\n\n\n\nIn the Console\n\ninstall.packages(\"here\")\n\n\n\nload package and call the here function\n\n\n# load package\nlibrary(here)\n\n# read in data\ndf_data &lt;- read.csv(here(\"data\", \"data_lifetime_pilot.csv\"))\n\n\nor directly call the here function without loading the package\n\n\n# read in data without loading here\ndf_data &lt;- read.csv(here::here(\"data\", \"data_lifetime_pilot.csv\"))\n\n\nnot that I stored the data with the prefix df_\n\ndf stands for dataframe\n\nI recommend using object-type defining prefixes for all objects in your Environment\n\ne.g., fit_ for models, fig_ for figures, sum_ for summaries, tbl_ for tables, etc."
   },
   {
     "objectID": "slides/day2/rprojects.html#section-4",
     "href": "slides/day2/rprojects.html#section-4",
     "title": "RProjects",
     "section": "",
-    "text": "Reproduce your analysis\n\n\n\n\nMake sure you save your script, then close your Rproject.\nRe-open the project. Can you re-run the script?"
+    "text": "Reproduce your analysis\n\n\n\n\nPerform some data exploration (e.g., with names(), summary(), dplyr::glimpse(), whatever you typically do)\nSave your script, then close RStudio/your Rproject.\nRe-open the project. Can you re-run the script?"
   },
   {
     "objectID": "slides/day1/reproducibility_slides.html#systemic-problem-in-science",
@@ -1006,7 +992,7 @@
     "href": "slides/day1/reproducibility_slides.html#reproducibility-vs.-replication",
     "title": "Reproducibility in linguistic research and R",
     "section": "Reproducibility vs. replication",
-    "text": "Reproducibility vs. replication\n\nthe two terms have been used interchangably in the past (e.g., in the title of Open Science Collaboration, 2015)\n\nwe’ll define them as follows (and this is becoming the standard distinction, imo)\n\n\n\n\n\nReproducibility\n\nre-analysing the same data using (ideally) the same scripts, software, etc\naim: produce the same results (means, model estimates, etc.)\nwhy: tests for errors, coding mistakes, biases, etc.\n\n\nReplication\n\nre-running a previous experiment, ideally with the same materials, set-up, etc.\nideally the same analysis workflow as the original study would also be used (i.e., like reproducing the analyses but with new data)\naim: test whether results are replicated with new data in terms of direction and magnitude\n\n\n\n\nin short:\n\nreproducibility = re-analyses of the same data\n\nreplication = collection of new data"
+    "text": "Reproducibility vs. replication\n\nthe two terms have been used interchangably in the past (e.g., in the title of Open Science Collaboration, 2015)\n\nwe’ll define them as follows (and this is becoming the standard distinction, imo)\n\n\n\n\n\nReproducibility\n\nre-analysing the same data using (ideally) the same scripts, software, etc\naim: produce the same results (means, model estimates, etc.)\nwhy: tests for errors, coding mistakes, biases, etc.\n\n\nReplication\n\nre-running a previous experiment, ideally with the same materials, set-up, etc.\nideally the same analysis workflow as the original study (i.e., like reproducing the analyses but with new data)\naim: test whether results are replicated with new data in terms of direction and magnitude\n\n\n\n\nin short:\n\nreproducibility = re-analysis of the same data\n\nreplication = collection of new data"
   },
   {
     "objectID": "slides/day1/reproducibility_slides.html#practice-fair-principles",
@@ -1105,7 +1091,7 @@
     "href": "slides/day1/reproducibility.html#reproducibility-vs.-replication-1",
     "title": "Reproducibility in linguistic research and R",
     "section": "2.1 Reproducibility vs. replication",
-    "text": "2.1 Reproducibility vs. replication\n\nthe two terms have been used interchangably in the past (e.g., in the title of Open Science Collaboration, 2015)\n\nwe’ll define them as follows (and this is becoming the standard distinction, imo)\n\n\n\n\nReproducibility\n\nre-analysing the same data using (ideally) the same scripts, software, etc\naim: produce the same results (means, model estimates, etc.)\nwhy: tests for errors, coding mistakes, biases, etc.\n\n\nReplication\n\nre-running a previous experiment, ideally with the same materials, set-up, etc.\nideally the same analysis workflow as the original study would also be used (i.e., like reproducing the analyses but with new data)\naim: test whether results are replicated with new data in terms of direction and magnitude\n\n\n\n\nin short:\n\nreproducibility = re-analyses of the same data\nreplication = collection of new data",
+    "text": "2.1 Reproducibility vs. replication\n\nthe two terms have been used interchangably in the past (e.g., in the title of Open Science Collaboration, 2015)\n\nwe’ll define them as follows (and this is becoming the standard distinction, imo)\n\n\n\n\nReproducibility\n\nre-analysing the same data using (ideally) the same scripts, software, etc\naim: produce the same results (means, model estimates, etc.)\nwhy: tests for errors, coding mistakes, biases, etc.\n\n\nReplication\n\nre-running a previous experiment, ideally with the same materials, set-up, etc.\nideally the same analysis workflow as the original study (i.e., like reproducing the analyses but with new data)\naim: test whether results are replicated with new data in terms of direction and magnitude\n\n\n\n\nin short:\n\nreproducibility = re-analysis of the same data\nreplication = collection of new data",
     "crumbs": [
       "D. Palleschi",
       "Day 1: Introduction to reproducibility",

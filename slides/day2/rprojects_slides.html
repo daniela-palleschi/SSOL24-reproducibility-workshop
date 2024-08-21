@@ -582,7 +582,18 @@ Figure&nbsp;2: Open from RStudio
 </div>
 </div>
 </div>
-</section><section id="global-rstudio-options" class="title-slide slide level2 center"><h2>Global RStudio options</h2>
+</section><section id="adding-a-readme-file" class="title-slide slide level2 center"><h2>Adding a README file</h2>
+<ul>
+<li class="fragment">
+<code>File &gt; New File &gt; Markdown File</code> (<em>not</em> R Markdown!)
+<ul>
+<li class="fragment">add some text describing the purpose of this project</li>
+<li class="fragment">include your name, the date</li>
+<li class="fragment">use Markdown formatting (e.g., <code>#</code> for headings, <code>*italics*</code>, <code>**bold**</code>)</li>
+</ul>
+</li>
+<li class="fragment">save as <code>README.md</code> in your project directory</li>
+</ul></section><section id="global-rstudio-options" class="title-slide slide level2 center"><h2>Global RStudio options</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -639,9 +650,25 @@ Figure&nbsp;3: RStudio settings for reproducibility
 </div>
 </div>
 </div>
-</section><section id="spot-the-differences" class="title-slide slide level2 center"><h2>Spot the differences</h2>
+</section><section id="identifying-your-rproject" class="title-slide slide level2 center"><h2>Identifying your RProject</h2>
+<ul>
+<li class="fragment">there are a ways to check which (if any) RProject you’re in
+<ul>
+<li class="fragment">there are 6 differences between <a href="#/identifying-your-rproject" class="quarto-xref">Figure&nbsp;4</a> and <a href="#/identifying-your-rproject" class="quarto-xref">Figure&nbsp;5</a>
+</li>
+<li class="fragment">which is in an RProject session?</li>
+</ul>
+</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-1-1">Spot the differences</a></li>
+<li><a href="#tabset-1-2">Show the differences</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:45%;">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-noproject" class="quarto-figure quarto-figure-center quarto-float">
@@ -654,7 +681,9 @@ Figure&nbsp;4: RStudio Session A
 </div>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-project" class="quarto-figure quarto-figure-center quarto-float">
@@ -669,9 +698,20 @@ Figure&nbsp;5: RStudio Session B
 </div>
 </div>
 </div>
-</section><section id="spot-the-differences-rproject-vs.-none" class="title-slide slide level2 center"><h2>Spot the differences: RProject vs.&nbsp;None</h2>
-
-<img data-src="../../media/rproject_spot-the-diffs.png" class="r-stretch"></section><section id="folder-structure-1" class="title-slide slide level2 center"><h2>Folder structure</h2>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="../../media/rproject_spot-the-diffs.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section><section><section id="folder-structure-1" class="title-slide slide level1 center"><h1>Folder structure</h1>
 <ul>
 <li class="fragment">some folders you’ll typically want to have:
 <ul>
@@ -836,7 +876,19 @@ Figure&nbsp;6: Illustration by <a href="https://github.com/allisonhorst">Allison
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># read in data without loading here</span></span>
 <span id="cb3-2"><a></a>df_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"data_lifetime_pilot.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="section-4" class="title-slide slide level2 unlisted unnumbered center scrollable"><h2></h2>
+<ul>
+<li class="fragment">not that I stored the data with the prefix <code>df_</code>
+<ul>
+<li class="fragment">
+<code>df</code> stands for dataframe</li>
+</ul>
+</li>
+<li class="fragment">I recommend using object-type defining prefixes for all objects in your Environment
+<ul>
+<li class="fragment">e.g., <code>fit_</code> for models, <code>fig_</code> for figures, <code>sum_</code> for summaries, <code>tbl_</code> for tables, etc.</li>
+</ul>
+</li>
+</ul></section><section id="section-4" class="title-slide slide level2 unlisted unnumbered center scrollable"><h2></h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -847,7 +899,8 @@ Figure&nbsp;6: Illustration by <a href="https://github.com/allisonhorst">Allison
 </div>
 <div class="callout-content">
 <ol type="1">
-<li class="fragment">Make sure you save your script, then close your Rproject.</li>
+<li class="fragment">Perform some data exploration (e.g., with <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>, <code><a href="https://pillar.r-lib.org/reference/glimpse.html">dplyr::glimpse()</a></code>, whatever you typically do)</li>
+<li class="fragment">Save your script, then close RStudio/your Rproject.</li>
 <li class="fragment">Re-open the project. Can you re-run the script?</li>
 </ol>
 </div>

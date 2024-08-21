@@ -367,9 +367,9 @@ Daniela Palleschi
 </section><section id="learning-objectives" class="title-slide slide level1 unnumbered unlisted center"><h1>Learning Objectives</h1>
 <p>Today we will learn…</p>
 <ul>
-<li class="fragment">how to implement a project-oriented workflow in R</li>
-<li class="fragment">how to organise folders and file names</li>
-<li class="fragment">how to set up our first R project</li>
+<li class="fragment">about reproducibility practices beyond sharing code and data</li>
+<li class="fragment">about project-oriented workflows</li>
+<li class="fragment">what we will cover in this workshop</li>
 </ul></section><section><section id="building-a-reproducible-workflow-in-r" class="title-slide slide level1 center"><h1>Building a reproducible workflow in R</h1>
 <ul>
 <li class="fragment">we now know some important principles of a reproducible workflow
@@ -423,7 +423,50 @@ Daniela Palleschi
 <li class="fragment">reproducible principles facilitate adapting as it grows</li>
 </ul>
 </li>
-</ul></section><section id="literate-programming" class="title-slide slide level2 center"><h2>Literate programming</h2>
+</ul></section><section id="naming-conventions" class="title-slide slide level3 smaller center scrollable"><h3>Naming conventions</h3>
+<ul>
+<li class="fragment">there are some “rules” for naming files and folders
+<ul>
+<li class="fragment"><a href="https://the-turing-way.netlify.app/project-design/filenaming.html">The Turing Way: Naming files, folders, and other things</a></li>
+<li class="fragment"><a href="https://speakerdeck.com/jennybc/how-to-name-files">Jenny Bryan: naming things (Reproducible Science Workshop 2015)</a></li>
+</ul>
+</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li class="fragment">Avoid special characters
+<ul>
+<li class="fragment">ensures machine readability</li>
+</ul>
+</li>
+<li class="fragment">Make names concise but meaningful
+<ul>
+<li class="fragment">ensures human-readability</li>
+</ul>
+</li>
+<li class="fragment">Avoid spaces
+<ul>
+<li class="fragment">try <code>CamelCase</code>, snake case (<code>snake_case</code>), or skewer case (<code>skewer-case</code>)</li>
+<li class="fragment">or use hyphens (<code>-</code>) to separate chunks, and underscores (<code>_</code>) to connect words of the same chunk</li>
+</ul>
+</li>
+</ol>
+</div><div class="column" style="width:50%;">
+<ol start="4" type="1">
+<li class="fragment">Consider default ordering
+<ul>
+<li class="fragment">e.g., with dates: <code>YYYY-MM-DD</code>
+</li>
+<li class="fragment">with folders or files: numerical prefixes (e.g., <code>01-data_cleaning.R</code>, <code>02-data_visualisation.R</code>)</li>
+</ul>
+</li>
+<li class="fragment">Be <em>consistent</em>
+</li>
+</ol>
+</div>
+</div>
+</section><section id="literate-programming" class="title-slide slide level2 center"><h2>Literate programming</h2>
 <blockquote>
 <p>Instead of imagining that our main task is to instruct a <em>computer</em> what to do, let us concentrate rather on explaining to <em>human beings</em> what we want a computer to do.</p>
 </blockquote>
@@ -554,7 +597,7 @@ Daniela Palleschi
 <ul>
 <li class="fragment">R
 <ul>
-<li class="fragment">version <code>4.4.0</code>, “Puppy Cup”</li>
+<li class="fragment">preferably version <code>4.4.0</code>, “Puppy Cup”</li>
 <li class="fragment">check current version with <code>R.version</code>
 </li>
 <li class="fragment">download/update: <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a>
@@ -563,7 +606,7 @@ Daniela Palleschi
 </li>
 <li class="fragment">RStudio
 <ul>
-<li class="fragment">version <code>2023.12.1.402</code>, “Ocean Storm”</li>
+<li class="fragment">preferably version <code>2023.12.1.402</code>, “Ocean Storm”</li>
 <li class="fragment">Help &gt; Check for updates</li>
 <li class="fragment">new install: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>
 </li>
@@ -574,9 +617,9 @@ Daniela Palleschi
 </ul></section><section id="learning-objectives-1" class="title-slide slide level1 unnumbered unlisted uncounted center"><h1>Learning objectives 🏁</h1>
 <p>Today we learned…</p>
 <ul>
-<li class="fragment">how to implement a project-oriented workflow in R ✅</li>
-<li class="fragment">how to organise folders and file names ✅</li>
-<li class="fragment">how to set up our first R project ✅</li>
+<li class="fragment">about reproducibility practices beyond sharing code and data ✅</li>
+<li class="fragment">about project-oriented workflows ✅</li>
+<li class="fragment">what we will cover in this workshop ✅</li>
 </ul></section><section id="references" class="title-slide slide level1 unlisted unnumbered smaller scrollable" data-visibility="uncounted"><h1>References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-custom-style="Bibliography" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-bowers_how_2016" class="csl-entry" role="listitem">
