@@ -433,8 +433,8 @@ Daniela Palleschi
 <ul>
 <li class="fragment">learn about literate programming and modular analyses</li>
 <li class="fragment">create and render a dynamic report with Quarto</li>
-<li class="fragment">load data</li>
-<li class="fragment">include a table and figure</li>
+<li class="fragment">load data using <code>here</code>
+</li>
 </ul></section><section id="modular-analyses" class="title-slide slide level1 center"><h1>Modular analyses</h1>
 <ul>
 <li class="fragment">recall our <code>scripts</code> folder (which you might’ve named <code>analysis</code> or something else)</li>
@@ -443,34 +443,12 @@ Daniela Palleschi
 <li class="fragment">or at least, multiple scripts</li>
 </ul>
 </li>
-<li class="fragment">this is the concept of <em>modularity</em> <span class="citation" data-cites="bowers_how_2016 nagler_coding_1995">(<a href="#/hands-on-working-with-quarto" role="doc-biblioref" onclick="">Bowers &amp; Voors, 2016</a>; <a href="#/hands-on-working-with-quarto" role="doc-biblioref" onclick="">Nagler, 1995</a>)</span>
+<li class="fragment">this is the concept of <em>modularity</em> <span class="citation" data-cites="bowers_how_2016 nagler_coding_1995">(<a href="#/session-info-1" role="doc-biblioref" onclick="">Bowers &amp; Voors, 2016</a>; <a href="#/session-info-1" role="doc-biblioref" onclick="">Nagler, 1995</a>)</span>
 <ul>
 <li class="fragment">separating data cleaning, pre-processing, recoding, merging, analyses, etc. into files/scripts</li>
 </ul>
 </li>
-</ul>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Modularity</strong></p>
-</div>
-<div class="callout-content">
-<p>The concept of modularity relating to data analysis refers to saving different stages of data manipulation and analysis in separate scripts <span class="citation" data-cites="nagler_coding_1995">(<a href="#/hands-on-working-with-quarto" role="doc-biblioref" onclick="">Nagler, 1995</a>)</span>. An important step is to also ensure the scripts are appropriately named so that the structure of your analysis/scripts folder “can be a map itself” <span class="citation" data-cites="bowers_how_2016">(<a href="#/hands-on-working-with-quarto" role="doc-biblioref" onclick="">Bowers &amp; Voors, 2016, p. 838</a>)</span>.</p>
-<p>A suggestion I have is to add numerical prefixes before scripts to explicitly state the order in which they must be run. For example, the script that reads in the raw data and cleans/preprocesses it (e.g., renaming or removing irrelevant/redundant variables) and exports a new data file that will be used in subsequent scripts could be called <code>00_cleaning.qmd</code> or something of the sort. My current prefered analysis script structure for a given data set is as follows:</p>
-<pre><code>scripts/
-  00_cleaning.qmd
-  01_preprocessing-and-eda.qmd
-  02_analyses.qmd
-  03_figures.qmd
-  04_tables.qmd</code></pre>
-<p>Where EDA refers to Exploratory Data Analysis, where I look at things like distributions of variables and demographic information. You’ll note the <code>03_figures.qmd</code> and <code>04_tables.qmd</code> scripts follow the <code>02_analyses.qmd</code> script. This is because my figures and tables include model results or predictions, and so need to follow the analyses.</p>
-</div>
-</div>
-</div>
-</section><section><section id="reproducible-code" class="title-slide slide level1 center"><h1>Reproducible code</h1>
+</ul></section><section><section id="reproducible-code" class="title-slide slide level1 center"><h1>Reproducible code</h1>
 <ul>
 <li class="fragment"><p>how you write your code is the first step in making it reproducible</p></li>
 <li class="fragment">
@@ -482,11 +460,16 @@ Daniela Palleschi
 </li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>Example</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"my_data.csv"</span>))</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="fu">library</span>(readr)</span>
-<span id="cb2-4"><a></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<details class="code-fold"><summary>Example</summary><div class="code-with-filename-file">
+<pre><strong>Non-linear code</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"my_data.csv"</span>))</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
 </div>
 </section><section id="writing-linear-code" class="title-slide slide level2 center scrollable"><h2>Writing linear code</h2>
 <ul>
@@ -510,9 +493,11 @@ Daniela Palleschi
 </ul>
 </li>
 </ul></section><section id="literate-programming" class="title-slide slide level2 center"><h2>Literate programming</h2>
+<blockquote>
+<p>Instead of imagining that our main task is to instruct a <em>computer</em> what to do, let us concentrate rather on explaining to <em>human beings</em> what we want a computer to do.</p>
+</blockquote>
+<p>— <span class="citation" data-cites="Knuth_literate_1984">Knuth (<a href="#/session-info-1" role="doc-biblioref" onclick="">1984</a>)</span>, p.&nbsp;97</p>
 <ul>
-<li class="fragment">introduced in <span class="citation" data-cites="Knuth_literate_1984">Knuth (<a href="#/hands-on-working-with-quarto" role="doc-biblioref" onclick="">1984</a>)</span>
-</li>
 <li class="fragment">refers to writing and documenting our code so that humans can understand it
 <ul>
 <li class="fragment">important for us: we are (generally) not professional programmers, nor are our peers</li>
@@ -524,28 +509,25 @@ Daniela Palleschi
 <li class="fragment">the length and frequency of these comments is your choice</li>
 </ul>
 </li>
-</ul></section><section id="example-r-script" class="title-slide slide level2 center"><h2>Example R script</h2>
+</ul></section><section id="example-r-script" class="title-slide slide level2 smaller center"><h2>Example R script</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a></a><span class="fu"># Analysis script for phoneme paper</span></span>
-<span id="cb3-2"><a></a><span class="fu"># author: Joe DiMaggio</span></span>
-<span id="cb3-3"><a></a><span class="fu"># date: Feb. 29, 2024</span></span>
-<span id="cb3-4"><a></a><span class="fu"># purpose: analyse cleaned dataset</span></span>
-<span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a><span class="fu"># Set-up ###</span></span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a><span class="fu"># load required packages</span></span>
-<span id="cb3-9"><a></a>library(dplyr)</span>
-<span id="cb3-10"><a></a>library(readr)</span>
-<span id="cb3-11"><a></a>library(ggplot2)</span>
-<span id="cb3-12"><a></a>library(lme4)</span>
-<span id="cb3-13"><a></a>library(broom.mixed) # tidy model summaries</span>
-<span id="cb3-14"><a></a>library(ggeffects) # model predictions</span>
-<span id="cb3-15"><a></a>library(here) # project-relative file path</span>
-<span id="cb3-16"><a></a></span>
-<span id="cb3-17"><a></a><span class="fu"># load-in data</span></span>
-<span id="cb3-18"><a></a>df_phon &lt;- read_csv(here("data", "phoneme_tidy_data.csv"))</span>
-<span id="cb3-19"><a></a></span>
-<span id="cb3-20"><a></a><span class="fu"># Explore data ###</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="fu"># Analysis script for phoneme paper</span></span>
+<span id="cb2-2"><a></a><span class="fu"># author: Joe DiMaggio</span></span>
+<span id="cb2-3"><a></a><span class="fu"># date: Feb. 29, 2024</span></span>
+<span id="cb2-4"><a></a><span class="fu"># purpose: analyse cleaned dataset</span></span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a><span class="fu"># Set-up ###</span></span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a><span class="fu"># load required packages</span></span>
+<span id="cb2-9"><a></a>library(dplyr) # data wrangling</span>
+<span id="cb2-10"><a></a>library(readr) # loding data</span>
+<span id="cb2-11"><a></a>library(here) # project-relative file path</span>
+<span id="cb2-12"><a></a></span>
+<span id="cb2-13"><a></a><span class="fu"># Load-in data</span></span>
+<span id="cb2-14"><a></a>df_phon &lt;- read_csv(here("data", "phoneme_tidy_data.csv"))</span>
+<span id="cb2-15"><a></a></span>
+<span id="cb2-16"><a></a><span class="fu"># Explore data ###</span></span>
+<span id="cb2-17"><a></a>summary(df_phone)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment">begins with some meta-information about the document, including its purpose
@@ -563,7 +545,7 @@ Daniela Palleschi
 <li class="fragment">description of specific lines of code are also given</li>
 </ul>
 </li>
-</ul></section></section><section><section id="dynamic-reports" class="title-slide slide level1 center scrollable"><h1>Dynamic reports</h1>
+</ul></section></section><section><section id="dynamic-reports" class="title-slide slide level1 center"><h1>Dynamic reports</h1>
 <ul>
 <li class="fragment">R scripts are useful, but don’t show the code output
 <ul>
@@ -580,8 +562,7 @@ Daniela Palleschi
 <li class="fragment">produce a variety of output files which contain text, R code chunks, and the code chunk outputs all in one</li>
 </ul>
 </li>
-</ul>
-<p>{-}</p>
+</ul></section><section id="section" class="title-slide slide level2 unnumbered center scrollable"><h2></h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -603,24 +584,150 @@ Daniela Palleschi
 </div>
 </div>
 </div>
+</section><section id="r-v.-rmarkdown-v.-quarto" class="title-slide slide level3 center"><h3>R v. Rmarkdown v. Quarto</h3>
+<ul>
+<li class="fragment">
+<code>.R</code> files contain (R) source code only</li>
+<li class="fragment">
+<code>.Rmd</code> files are <em>dynamic reports</em> that support
+<ul>
+<li class="fragment">R-Code (and R-packages)</li>
+</ul>
+</li>
+<li class="fragment">
+<code>.qmd</code> files are <em>dynamic reports</em> (RStudio v2022.07 or later
+<ul>
+<li class="fragment">R-Code (and R-packages)</li>
+<li class="fragment">native support for Python (and Jupyter-Notebooks)</li>
+<li class="fragment">native support for Julia</li>
+</ul>
+</li>
+</ul></section><section id="r-v.-rmarkdown-v.-quarto-1" class="title-slide slide level3 unlisted unnummbered center"><h3>R v. Rmarkdown v. Quarto</h3>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Check your RStudio version</strong></p>
+</div>
+<div class="callout-content">
+<div>
+<p>Run the following in the Console: <code>RStudio.Version()$version</code></p>
+<ul>
+<li>if the output is <code>2022.07</code> or higher you can use Quarto</li>
+<li>if not: update RStudio: <code>Help &gt; Check for updates</code>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section><section id="yaml" class="title-slide slide level2 center"><h2>YAML</h2>
+<ul>
+<li class="fragment">the section at the very top fenced by <code>---</code>
+</li>
+<li class="fragment">contains all the meta information about your document
+<ul>
+<li class="fragment">e.g.&nbsp;title, author name, date</li>
+<li class="fragment">also formatting information, e.g.&nbsp;type of output file</li>
+</ul>
+</li>
+<li class="fragment">there are many document formatting and customisation options that we won’t cover in this course</li>
+<li class="fragment">but for example I have many YAML formatting options in the source code of my slides</li>
+</ul></section><section id="yaml-1" class="title-slide slide level3 unlisted unnumbered center scrollable"><h3>YAML</h3>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>YAML</strong></p>
+</div>
+<div class="callout-content">
+<div>
+<ol type="1">
+<li>change the title if you want to do so.</li>
+<li>guess how to add a subtitle (hint: it is similar to adding a <code>title</code>)</li>
+<li>add an author, <code>author: ‘firstname lastname’</code> (see example below)</li>
+<li>add a table of contents (Table of Contents = <code>toc</code>) by changing <code>format</code> so that it looks like this:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="sc">---</span></span>
+<span id="cb3-2"><a></a>title<span class="sc">:</span> <span class="st">"Dynamic reports"</span></span>
+<span id="cb3-3"><a></a>author<span class="sc">:</span> <span class="st">"Daniela Palleschi"</span></span>
+<span id="cb3-4"><a></a>format<span class="sc">:</span></span>
+<span id="cb3-5"><a></a>  pdf<span class="sc">:</span></span>
+<span id="cb3-6"><a></a>    toc<span class="sc">:</span> true</span>
+<span id="cb3-7"><a></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="1">
+<li>Render the document. Do you see the changes?</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
 </section><section id="structure-your-reports" class="title-slide slide level2 center"><h2>Structure your reports</h2>
 <ul>
-<li class="fragment"><p>describe the function/purpose at the beginning</p></li>
-<li class="fragment">
-<p>document your train of thought and findings throughout the script</p>
+<li class="fragment">remember to use (sub-)headings (e.g., <code># Set-up</code>)</li>
+<li class="fragment">describe the function/purpose at the beginning of the script</li>
+<li class="fragment">document your train of thought and findings throughout the script
 <ul>
 <li class="fragment">e.g., why are you producing this plot, what does it tell you?</li>
 </ul>
 </li>
-<li class="fragment"><p>give an overview of the findings/end result at the end</p></li>
-<li class="fragment">
-<p>it’s wise to avoid very long, multi-purpose scripts</p>
+<li class="fragment">give an overview of the findings/end result at the end</li>
+<li class="fragment">it’s wise to avoid very long, multi-purpose scripts
 <ul>
 <li class="fragment">rule of thumb: one script per product or purpose</li>
-<li class="fragment">e.g., data cleaning, exploration, analysis, publiation figures, etc.</li>
+<li class="fragment">e.g., data cleaning, exploration, analysis, publication figures, etc.</li>
 </ul>
 </li>
-</ul></section><section id="session-information" class="title-slide slide level2 center"><h2>Session Information</h2>
+</ul></section><section id="code-chunks" class="title-slide slide level2 center"><h2>Code chunks</h2>
+<ul>
+<li class="fragment">the main benefit of dynamic reports: combining text with code (and code output)</li>
+<li class="fragment">R code goes in code chunks:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a></a><span class="in">2+2</span></span>
+<span id="cb4-3"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">to add a code chunk: <code>Code &gt; Insert Chunk</code>
+<ul>
+<li class="fragment">or use the keyboard shortcut: <code>Cmd+Opt+I</code> (Mac) / <code>Ctrl+Alt+I</code> (Windows)</li>
+</ul>
+</li>
+</ul></section><section id="structuring-and-code-chunks" class="title-slide slide level3 unlisted unnumbered center scrollable"><h3>Structuring and Code Chunks</h3>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Adding content</strong></p>
+</div>
+<div class="callout-content">
+<div>
+<ol type="1">
+<li>Use the example R script above to create a structured document
+<ul>
+<li>use headings (<code>#</code>) and subheadings (<code>##</code>) accordingly</li>
+</ul>
+</li>
+<li>Load in our dataset in a code chunk</li>
+<li>Render the document. Do you see the changes?</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section></section><section><section id="documenting-package-dependencies" class="title-slide slide level1 center"><h1>Documenting package dependencies</h1>
 <ul>
 <li class="fragment">R and R package versions are both open source, and are frequently updated
 <ul>
@@ -637,12 +744,16 @@ Daniela Palleschi
 </li>
 </ul>
 </li>
-</ul></section><section id="printing-session-info" class="title-slide slide level2 center"><h2>Printing session info</h2>
+</ul></section><section id="session-info" class="title-slide slide level2 center"><h2>Session info</h2>
 <ul>
-<li class="fragment">so, print your session info at the end of every script:</li>
+<li class="fragment">so, print your session info at the end of every script
+<ul>
+<li class="fragment">this will print your R version, package versions, and more</li>
+</ul>
+</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="tips-and-tricks" class="title-slide slide level1 center"><h1>Tips and tricks</h1>
 <ul>
@@ -668,10 +779,12 @@ Daniela Palleschi
 <li class="fragment">often the problem is some dependency in your environment that is not linearly introduced in the script</li>
 </ul>
 </li>
-</ul></section><section id="session-info" class="title-slide slide level1 unnumbered center"><h1>Session Info</h1>
+</ul></section><section id="hands-on-working-with-quarto" class="title-slide slide level1 center"><h1>Hands-on: working with Quarto</h1>
+<p>Follow the instructions on the workshop website: <a href="https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html">https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html</a></p>
+</section><section id="session-info-1" class="title-slide slide level1 unnumbered smaller scrollable"><h1>Session Info</h1>
 <p>My session info.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.0 (2024-04-24)
 Platform: aarch64-apple-darwin20
@@ -691,141 +804,14 @@ attached base packages:
 [1] stats     graphics  grDevices datasets  utils     methods   base     
 
 loaded via a namespace (and not attached):
- [1] compiler_4.4.0    fastmap_1.2.0     cli_3.6.3         htmltools_0.5.8.1
- [5] tools_4.4.0       rstudioapi_0.16.0 yaml_2.3.10       rmarkdown_2.28   
- [9] knitr_1.48        jsonlite_1.8.8    xfun_0.47         digest_0.6.36    
-[13] rlang_1.1.4       renv_1.0.7        evaluate_0.24.0  </code></pre>
-</div>
-</div>
-</section><section id="hands-on-working-with-quarto" class="title-slide slide level1 smaller scrollable"><h1>Hands-on: working with Quarto</h1>
-<p>If you’ve never worked with Rmarkdown or Quarto before, try the following task. If you have, then try looking at a current or past analysis project you have, and check to see if it has the following:</p>
-<ul>
-<li class="fragment">a designated folder containing all required files</li>
-<li class="fragment">an <code>.RProj</code> file in this folder</li>
-<li class="fragment">a transparent and organised folder structure</li>
-<li class="fragment">a consistent and clear folder and file naming convention</li>
-<li class="fragment">a README file in the project folder, and any other large folders</li>
-<li class="fragment">code that runs if you try it</li>
-</ul>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Task: Editing your Quarto document</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li class="fragment">In the <code>YAML</code> (meta document info between <code>---</code>):
-<ul>
-<li class="fragment">Change the title</li>
-<li class="fragment">Add <code>date: "08/21/2024"</code> (MM/DD/YYYY format)</li>
-<li class="fragment">Change <code>format: html</code> to the following:</li>
-</ul>
-</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a></a><span class="an">format:</span></span>
-<span id="cb7-2"><a></a>  html:</span>
-<span id="cb7-3"><a></a>    toc: true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Render the document. If it works, continue. If not, check that you aren’t missing any punctuation (e.g., quotation marks).</p>
-<ol start="2" type="1">
-<li class="fragment">Adding a heading and text
-<ul>
-<li class="fragment">Remove all text below the YAML.</li>
-<li class="fragment">Add a heading <code># Packages</code>
-</li>
-<li class="fragment">Navigate two lines below your heading, and write <code>Install the tidyverse and here packages. This will not run when we render the script.</code>
-</li>
-</ul>
-</li>
-<li class="fragment">Adding a code chunk
-<ul>
-<li class="fragment">Navigate two lines below the text, and insert a new code chunk (either <code>Code &gt; Insert Chunk</code> or the keyboard shortcut <code>Cmd+Option+I</code> on Mac or <code>Ctrl+Alt+I</code> on Windows)</li>
-<li class="fragment">in the very first line of the code chunk, add <code>#| eval: false</code>
-</li>
-<li class="fragment">below this line, write <code># install packages</code>
-</li>
-<li class="fragment">below this line, write <code>install.packages("tidyverse")</code> and hit <code>Cmd/Ctrl+Enter</code> and wait for the package to install (this may take some minutes)</li>
-<li class="fragment">below this line, write <code>install.packages("here")</code> and hit <code>Cmd/Ctrl+Enter</code>
-</li>
-</ul>
-</li>
-<li class="fragment">Loading packages
-<ul>
-<li class="fragment">Add a new line of text: <code>Print the project directory filepath using the ```here``` package.</code>
-</li>
-<li class="fragment">Insert a new code chunk two lines below the first code chunk</li>
-<li class="fragment">below this line, write <code># load packages</code>
-</li>
-<li class="fragment">below this line, write <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>
-</li>
-<li class="fragment">below this line, write <code><a href="https://here.r-lib.org/">library(here)</a></code>
-</li>
-<li class="fragment">hit <code>Cmd/Ctrl+Shift+Enter</code>, or click the little green triangle at the top right of the chunk</li>
-</ul>
-</li>
-<li class="fragment">Printing our project directory path
-<ul>
-<li class="fragment">In a new code chunk, add the comment <code># print project directory</code> and the code <code>here()</code>
-</li>
-</ul>
-</li>
-<li class="fragment">Render the document</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Reveal Quarto syntax</strong></p>
-</div>
-<div class="callout-content">
-<div class="cell" data-filename="Reveal correct code">
-<div class="cell-output cell-output-stdout">
-<pre><code>---
-title: "Literate programming"
-author: "Daniela Palleschi"
-date: "08/22/2024"
-format:
-  html:
-    toc: true
----
-
-# Packages
-
-Install the tidyverse and here packages. This will not run when we render the script.
-
-```{r}
-#| eval: false
-# install packages
-install.packages("tidyverse")
-install.packages("here")
-```
-
-Load required packages.
-
-```{r}
-# load packages
-library(tidyverse)
-library(here)
-```
-
-Print the project directory filepath using the `here` package.
-
-```{r}
-# print project directory
-here()
-```</code></pre>
-</div>
-</div>
-</div>
+ [1] vctrs_0.6.5       cli_3.6.3         knitr_1.48        rlang_1.1.4      
+ [5] xfun_0.47         renv_1.0.7        jsonlite_1.8.8    glue_1.7.0       
+ [9] rprojroot_2.0.4   htmltools_0.5.8.1 hms_1.1.3         fansi_1.0.6      
+[13] rmarkdown_2.28    evaluate_0.24.0   tibble_3.2.1      tzdb_0.4.0       
+[17] fastmap_1.2.0     yaml_2.3.10       lifecycle_1.0.4   compiler_4.4.0   
+[21] pkgconfig_2.0.3   here_1.0.1        rstudioapi_0.16.0 digest_0.6.36    
+[25] R6_2.5.1          readr_2.1.5       utf8_1.2.4        pillar_1.9.0     
+[29] magrittr_2.0.3    tools_4.4.0      </code></pre>
 </div>
 </div>
 

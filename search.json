@@ -505,49 +505,96 @@
     "href": "slides/day3/repro_code.html",
     "title": "Writing Reproducible Code",
     "section": "",
-    "text": "learn about literate programming and modular analyses\ncreate and render a dynamic report with Quarto\nload data\ninclude a table and figure"
+    "text": "learn about literate programming and modular analyses\ncreate and render a dynamic report with Quarto\nload data using here",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 3: Literate programming and Modularity",
+      "Writing Reproducible Code"
+    ]
   },
   {
     "objectID": "slides/day3/repro_code.html#writing-linear-code",
     "href": "slides/day3/repro_code.html#writing-linear-code",
     "title": "Writing Reproducible Code",
     "section": "Writing linear code",
-    "text": "Writing linear code\n\nyou need to load a package before you call a function from it\n\nif we’re just working in an R session, before means temporally prior\nwith linear code, before means higher up in the script\n\nsuch pre-requisite code must\n\nbe present in the script\nappear above the first line of code that uses a function from this package\n\nmissing pre-requisite code might not throw an error message\n\nbut might produce output we aren’t expecting\ne.g., forgetting to filter out certain observations\nor forgetting that some observations have been filtered out"
+    "text": "Writing linear code\n\nyou need to load a package before you call a function from it\n\nif we’re just working in an R session, before means temporally prior\nwith linear code, before means higher up in the script\n\nsuch pre-requisite code must\n\nbe present in the script\nappear above the first line of code that uses a function from this package\n\nmissing pre-requisite code might not throw an error message\n\nbut might produce output we aren’t expecting\ne.g., forgetting to filter out certain observations\nor forgetting that some observations have been filtered out",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 3: Literate programming and Modularity",
+      "Writing Reproducible Code"
+    ]
   },
   {
     "objectID": "slides/day3/repro_code.html#literate-programming",
     "href": "slides/day3/repro_code.html#literate-programming",
     "title": "Writing Reproducible Code",
     "section": "Literate programming",
-    "text": "Literate programming\n\nintroduced in Knuth (1984)\nrefers to writing and documenting our code so that humans can understand it\n\nimportant for us: we are (generally) not professional programmers, nor are our peers\n\nwe need to not only know what our code is doing when we look back at it in the future/share it\nthe easiest way: informative comments\n\nthe length and frequency of these comments is your choice"
+    "text": "Literate programming\n\nInstead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.\n\n— Knuth (1984), p. 97\n\nrefers to writing and documenting our code so that humans can understand it\n\nimportant for us: we are (generally) not professional programmers, nor are our peers\n\nwe need to not only know what our code is doing when we look back at it in the future/share it\nthe easiest way: informative comments\n\nthe length and frequency of these comments is your choice",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 3: Literate programming and Modularity",
+      "Writing Reproducible Code"
+    ]
   },
   {
-    "objectID": "slides/day3/repro_code.html#example-r-script",
-    "href": "slides/day3/repro_code.html#example-r-script",
+    "objectID": "slides/day3/repro_code.html#example-r-script-1",
+    "href": "slides/day3/repro_code.html#example-r-script-1",
     "title": "Writing Reproducible Code",
     "section": "Example R script",
-    "text": "Example R script\n\n# Analysis script for phoneme paper\n# author: Joe DiMaggio\n# date: Feb. 29, 2024\n# purpose: analyse cleaned dataset\n\n# Set-up ###\n\n# load required packages\nlibrary(dplyr)\nlibrary(readr)\nlibrary(ggplot2)\nlibrary(lme4)\nlibrary(broom.mixed) # tidy model summaries\nlibrary(ggeffects) # model predictions\nlibrary(here) # project-relative file path\n\n# load-in data\ndf_phon &lt;- read_csv(here(\"data\", \"phoneme_tidy_data.csv\"))\n\n# Explore data ###\n\n\nbegins with some meta-information about the document, including its purpose\n\naids in knowing which scripts to run in which sequence\n\nthere are three hashtags after some headings (###)\n\nthis is helpful because it structures the outline of the document in RStudio\n\nthe purpose of chunks of code are written above\n\ndescription of specific lines of code are also given"
+    "text": "Example R script\n\n# Analysis script for phoneme paper\n# author: Joe DiMaggio\n# date: Feb. 29, 2024\n# purpose: analyse cleaned dataset\n\n# Set-up ###\n\n# load required packages\nlibrary(dplyr) # data wrangling\nlibrary(readr) # loding data\nlibrary(here) # project-relative file path\n\n# Load-in data\ndf_phon &lt;- read_csv(here(\"data\", \"phoneme_tidy_data.csv\"))\n\n# Explore data ###\nsummary(df_phone)\n\n\nbegins with some meta-information about the document, including its purpose\n\naids in knowing which scripts to run in which sequence\n\nthere are three hashtags after some headings (###)\n\nthis is helpful because it structures the outline of the document in RStudio\n\nthe purpose of chunks of code are written above\n\ndescription of specific lines of code are also given",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 3: Literate programming and Modularity",
+      "Writing Reproducible Code"
+    ]
+  },
+  {
+    "objectID": "slides/day3/repro_code.html#yaml",
+    "href": "slides/day3/repro_code.html#yaml",
+    "title": "Writing Reproducible Code",
+    "section": "YAML",
+    "text": "YAML\n\nthe section at the very top fenced by ---\ncontains all the meta information about your document\n\ne.g. title, author name, date\nalso formatting information, e.g. type of output file\n\nthere are many document formatting and customisation options that we won’t cover in this course\nbut for example I have many YAML formatting options in the source code of my slides\n\n\n\n\n\n\n\nYAML\n\n\n\n\n\nchange the title if you want to do so.\nguess how to add a subtitle (hint: it is similar to adding a title)\nadd an author, author: ‘firstname lastname’ (see example below)\nadd a table of contents (Table of Contents = toc) by changing format so that it looks like this:\n\n\n---\ntitle: \"Dynamic reports\"\nauthor: \"Daniela Palleschi\"\nformat:\n  pdf:\n    toc: true\n---\n\n\nRender the document. Do you see the changes?",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 3: Literate programming and Modularity",
+      "Writing Reproducible Code"
+    ]
   },
   {
     "objectID": "slides/day3/repro_code.html#structure-your-reports",
     "href": "slides/day3/repro_code.html#structure-your-reports",
     "title": "Writing Reproducible Code",
     "section": "Structure your reports",
-    "text": "Structure your reports\n\ndescribe the function/purpose at the beginning\ndocument your train of thought and findings throughout the script\n\ne.g., why are you producing this plot, what does it tell you?\n\ngive an overview of the findings/end result at the end\nit’s wise to avoid very long, multi-purpose scripts\n\nrule of thumb: one script per product or purpose\ne.g., data cleaning, exploration, analysis, publiation figures, etc."
+    "text": "Structure your reports\n\nremember to use (sub-)headings (e.g., # Set-up)\ndescribe the function/purpose at the beginning of the script\ndocument your train of thought and findings throughout the script\n\ne.g., why are you producing this plot, what does it tell you?\n\ngive an overview of the findings/end result at the end\nit’s wise to avoid very long, multi-purpose scripts\n\nrule of thumb: one script per product or purpose\ne.g., data cleaning, exploration, analysis, publication figures, etc.",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 3: Literate programming and Modularity",
+      "Writing Reproducible Code"
+    ]
   },
   {
-    "objectID": "slides/day3/repro_code.html#session-information",
-    "href": "slides/day3/repro_code.html#session-information",
+    "objectID": "slides/day3/repro_code.html#code-chunks",
+    "href": "slides/day3/repro_code.html#code-chunks",
     "title": "Writing Reproducible Code",
-    "section": "Session Information",
-    "text": "Session Information\n\nR and R package versions are both open source, and are frequently updated\n\nyou might’ve run your code using dplyr version 1.1.0 or later, which introduced the .by per-operation grouping argument\nwhat happens when somebody who has an older version of dplyr tries to run your code?\n\nThey won’t be able to!\n\nthe reverse of this situation is more common:\n\na newer version of a package no longer supports a deprecated function or argument"
+    "section": "Code chunks",
+    "text": "Code chunks\n\nthe main benefit of dynamic reports: combining text with code (and code output)\nR code goes in code chunks:\n\n\n```{r}\n2+2\n```\n\n[1] 4\n\n\n\nto add a code chunk: Code &gt; Insert Chunk\n\nor use the keyboard shortcut: Cmd+Opt+I (Mac) / Ctrl+Alt+I (Windows)\n\n\n\n\n\n\n\n\nAdding content\n\n\n\n\n\nUse the example R script above to create a structured document\n\nuse headings (#) and subheadings (##) accordingly\n\nLoad in our dataset in a code chunk\nRender the document. Do you see the changes?",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 3: Literate programming and Modularity",
+      "Writing Reproducible Code"
+    ]
   },
   {
-    "objectID": "slides/day3/repro_code.html#printing-session-info",
-    "href": "slides/day3/repro_code.html#printing-session-info",
+    "objectID": "slides/day3/repro_code.html#session-info",
+    "href": "slides/day3/repro_code.html#session-info",
     "title": "Writing Reproducible Code",
-    "section": "Printing session info",
-    "text": "Printing session info\n\nso, print your session info at the end of every script:\n\n\nsessionInfo()"
+    "section": "Session info",
+    "text": "Session info\n\nso, print your session info at the end of every script\n\nthis will print your R version, package versions, and more\n\n\n\nsessionInfo()",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 3: Literate programming and Modularity",
+      "Writing Reproducible Code"
+    ]
   },
   {
     "objectID": "slides/day3/repro_code_slides.html#writing-linear-code",
@@ -561,35 +608,49 @@
     "href": "slides/day3/repro_code_slides.html#literate-programming",
     "title": "Writing Reproducible Code",
     "section": "Literate programming",
-    "text": "Literate programming\n\nintroduced in Knuth (1984)\n\nrefers to writing and documenting our code so that humans can understand it\n\nimportant for us: we are (generally) not professional programmers, nor are our peers\n\n\nwe need to not only know what our code is doing when we look back at it in the future/share it\nthe easiest way: informative comments\n\nthe length and frequency of these comments is your choice"
+    "text": "Literate programming\n\nInstead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.\n\n— Knuth (1984), p. 97\n\nrefers to writing and documenting our code so that humans can understand it\n\nimportant for us: we are (generally) not professional programmers, nor are our peers\n\n\nwe need to not only know what our code is doing when we look back at it in the future/share it\nthe easiest way: informative comments\n\nthe length and frequency of these comments is your choice"
   },
   {
     "objectID": "slides/day3/repro_code_slides.html#example-r-script",
     "href": "slides/day3/repro_code_slides.html#example-r-script",
     "title": "Writing Reproducible Code",
     "section": "Example R script",
-    "text": "Example R script\n\n# Analysis script for phoneme paper\n# author: Joe DiMaggio\n# date: Feb. 29, 2024\n# purpose: analyse cleaned dataset\n\n# Set-up ###\n\n# load required packages\nlibrary(dplyr)\nlibrary(readr)\nlibrary(ggplot2)\nlibrary(lme4)\nlibrary(broom.mixed) # tidy model summaries\nlibrary(ggeffects) # model predictions\nlibrary(here) # project-relative file path\n\n# load-in data\ndf_phon &lt;- read_csv(here(\"data\", \"phoneme_tidy_data.csv\"))\n\n# Explore data ###\n\n\nbegins with some meta-information about the document, including its purpose\n\naids in knowing which scripts to run in which sequence\n\n\nthere are three hashtags after some headings (###)\n\nthis is helpful because it structures the outline of the document in RStudio\n\n\nthe purpose of chunks of code are written above\n\ndescription of specific lines of code are also given"
+    "text": "Example R script\n\n# Analysis script for phoneme paper\n# author: Joe DiMaggio\n# date: Feb. 29, 2024\n# purpose: analyse cleaned dataset\n\n# Set-up ###\n\n# load required packages\nlibrary(dplyr) # data wrangling\nlibrary(readr) # loding data\nlibrary(here) # project-relative file path\n\n# Load-in data\ndf_phon &lt;- read_csv(here(\"data\", \"phoneme_tidy_data.csv\"))\n\n# Explore data ###\nsummary(df_phone)\n\n\nbegins with some meta-information about the document, including its purpose\n\naids in knowing which scripts to run in which sequence\n\n\nthere are three hashtags after some headings (###)\n\nthis is helpful because it structures the outline of the document in RStudio\n\n\nthe purpose of chunks of code are written above\n\ndescription of specific lines of code are also given"
+  },
+  {
+    "objectID": "slides/day3/repro_code_slides.html#section",
+    "href": "slides/day3/repro_code_slides.html#section",
+    "title": "Writing Reproducible Code",
+    "section": "",
+    "text": "Task: New Quarto document\n\n\n\nNavigate to File &gt; New file &gt; Quarto document\n\nWrite some title, your name (Author), make sure ‘Visual markdown Editor’ is unchecked\n\nClick ‘Create’\nA new tab will open in R Studio. Press the ‘Render’ button above the top of the document, you will be prompted to save the document. Store it in a folder called scripts and save it as 01-literate-programming.qmd.\nWhat happens?"
+  },
+  {
+    "objectID": "slides/day3/repro_code_slides.html#yaml",
+    "href": "slides/day3/repro_code_slides.html#yaml",
+    "title": "Writing Reproducible Code",
+    "section": "YAML",
+    "text": "YAML\n\nthe section at the very top fenced by ---\n\ncontains all the meta information about your document\n\ne.g. title, author name, date\nalso formatting information, e.g. type of output file\n\n\nthere are many document formatting and customisation options that we won’t cover in this course\nbut for example I have many YAML formatting options in the source code of my slides"
   },
   {
     "objectID": "slides/day3/repro_code_slides.html#structure-your-reports",
     "href": "slides/day3/repro_code_slides.html#structure-your-reports",
     "title": "Writing Reproducible Code",
     "section": "Structure your reports",
-    "text": "Structure your reports\n\ndescribe the function/purpose at the beginning\n\ndocument your train of thought and findings throughout the script\n\ne.g., why are you producing this plot, what does it tell you?\n\n\ngive an overview of the findings/end result at the end\n\nit’s wise to avoid very long, multi-purpose scripts\n\nrule of thumb: one script per product or purpose\ne.g., data cleaning, exploration, analysis, publiation figures, etc."
+    "text": "Structure your reports\n\nremember to use (sub-)headings (e.g., # Set-up)\ndescribe the function/purpose at the beginning of the script\ndocument your train of thought and findings throughout the script\n\ne.g., why are you producing this plot, what does it tell you?\n\n\ngive an overview of the findings/end result at the end\nit’s wise to avoid very long, multi-purpose scripts\n\nrule of thumb: one script per product or purpose\ne.g., data cleaning, exploration, analysis, publication figures, etc."
   },
   {
-    "objectID": "slides/day3/repro_code_slides.html#session-information",
-    "href": "slides/day3/repro_code_slides.html#session-information",
+    "objectID": "slides/day3/repro_code_slides.html#code-chunks",
+    "href": "slides/day3/repro_code_slides.html#code-chunks",
     "title": "Writing Reproducible Code",
-    "section": "Session Information",
-    "text": "Session Information\n\nR and R package versions are both open source, and are frequently updated\n\nyou might’ve run your code using dplyr version 1.1.0 or later, which introduced the .by per-operation grouping argument\nwhat happens when somebody who has an older version of dplyr tries to run your code?\n\nThey won’t be able to!\n\n\nthe reverse of this situation is more common:\n\na newer version of a package no longer supports a deprecated function or argument"
+    "section": "Code chunks",
+    "text": "Code chunks\n\nthe main benefit of dynamic reports: combining text with code (and code output)\nR code goes in code chunks:\n\n\n```{r}\n2+2\n```\n\n[1] 4\n\n\n\nto add a code chunk: Code &gt; Insert Chunk\n\nor use the keyboard shortcut: Cmd+Opt+I (Mac) / Ctrl+Alt+I (Windows)"
   },
   {
-    "objectID": "slides/day3/repro_code_slides.html#printing-session-info",
-    "href": "slides/day3/repro_code_slides.html#printing-session-info",
+    "objectID": "slides/day3/repro_code_slides.html#session-info",
+    "href": "slides/day3/repro_code_slides.html#session-info",
     "title": "Writing Reproducible Code",
-    "section": "Printing session info",
-    "text": "Printing session info\n\nso, print your session info at the end of every script:\n\n\nsessionInfo()"
+    "section": "Session info",
+    "text": "Session info\n\nso, print your session info at the end of every script\n\nthis will print your R version, package versions, and more\n\n\n\n\nsessionInfo()"
   },
   {
     "objectID": "index.html",
@@ -1368,6 +1429,20 @@
     "href": "examples/literate-programming.html",
     "title": "Literate programming",
     "section": "",
-    "text": "Packages\nInstall the tidyverse and here packages. This will not run when we render the script.\n\n# install packages\ninstall.packages(\"tidyverse\")\ninstall.packages(\"here\")\n\nLoad required packages.\n\n# load packages\nlibrary(tidyverse)\nlibrary(here)\n\nPrint the project directory filepath using the here package.\n\n# print project directory\nhere()\n\n[1] \"/Users/danielapalleschi/Documents/Academic DP/Workshops/taught/SSOL 2024 Reproducibility workshop\""
+    "text": "Set-up environment: load packages and data\n\n\nInstall the tidyverse and here packages. This will not run when we render the script.\n\n# install packages\ninstall.packages(\"tidyverse\")\ninstall.packages(\"here\")\n\nLoad required packages.\n\n# load packages\nlibrary(tidyverse)\nlibrary(here)\n\nPrint the project directory filepath using the here package.\n\n# print project directory\nhere()\n\n[1] \"/Users/danielapalleschi/Documents/Academic DP/Workshops/taught/SSOL 2024 Reproducibility workshop\"\n\n\n\n\n\n\ndf_chromy &lt;- read_csv(here(\"data\", \"chromy_et-al_2023_English_final.csv\"))"
+  },
+  {
+    "objectID": "examples/literate-programming.html#packages",
+    "href": "examples/literate-programming.html#packages",
+    "title": "Literate programming",
+    "section": "",
+    "text": "Install the tidyverse and here packages. This will not run when we render the script.\n\n# install packages\ninstall.packages(\"tidyverse\")\ninstall.packages(\"here\")\n\nLoad required packages.\n\n# load packages\nlibrary(tidyverse)\nlibrary(here)\n\nPrint the project directory filepath using the here package.\n\n# print project directory\nhere()\n\n[1] \"/Users/danielapalleschi/Documents/Academic DP/Workshops/taught/SSOL 2024 Reproducibility workshop\""
+  },
+  {
+    "objectID": "examples/literate-programming.html#load-data",
+    "href": "examples/literate-programming.html#load-data",
+    "title": "Literate programming",
+    "section": "",
+    "text": "df_chromy &lt;- read_csv(here(\"data\", \"chromy_et-al_2023_English_final.csv\"))"
   }
 ]
