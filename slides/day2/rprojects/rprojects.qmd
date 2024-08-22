@@ -54,7 +54,7 @@ format:
 editor_options: 
   chunk_output_type: console
 bibliography: references.bib
-csl: ../../apa.csl
+csl: ../../../apa.csl
 execute:
   echo: false
 ---
@@ -62,7 +62,7 @@ execute:
 ```{r}
 #| echo: false
 #| eval: false
-rbbt::bbt_update_bib(here::here("slides", "day1", "rprojects.qmd"))
+rbbt::bbt_update_bib(here::here("slides", "day2", "rprojects", "rprojects.qmd"))
 ```
 
 
@@ -169,6 +169,14 @@ knitr::include_graphics(here::here("media", "rstudio_project_open.png"))
 
 ::::
 
+## Adding a README file
+
+- `File > New File > Markdown File` (*not* R Markdown!)
+  + add some text describing the purpose of this project
+  + include your name, the date
+  + use Markdown formatting (e.g., `#` for headings, `*italics*`, `**bold**`)
+- save as `README.md` in your project directory
+
 ## Global RStudio options
 
 :::: {.columns}
@@ -210,11 +218,19 @@ Change your Global Options so that
   + Save workspace to .RData on exit: Never
 :::
 
-## Spot the differences
+## Identifying your RProject
+
+- there are a ways to check which (if any) RProject you're in
+  + there are 6 differences between xyzfig-noproject and xyzfig-project
+  + which is in an RProject session?
+
+::: {.panel-tabset}
+
+### Spot the differences
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="45%"}
 
 ```{r}
 #| label: fig-noproject
@@ -224,7 +240,10 @@ knitr::include_graphics(here::here("media", "rstudio_noproject.png"))
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
 
 ```{r}
 #| label: fig-project
@@ -236,13 +255,15 @@ knitr::include_graphics(here::here("media", "rstudio_project.png"))
 
 ::::
 
-## Spot the differences: RProject vs. None
+### Show the differences
 
 ```{r}
 knitr::include_graphics(here::here("media", "rproject_spot-the-diffs.png"))
 ```
 
-## Folder structure
+:::
+
+# Folder structure
 
 - some folders you'll typically want to have:
   + `data`: containing your dataset(s)
@@ -256,7 +277,7 @@ knitr::include_graphics(here::here("media", "rproject_spot-the-diffs.png"))
 - do you have "raw", i.e., pre-processed data?
   + if so, you might want to create a `raw` sub-folder
   + and any other relevant sub-folders (e.g., `processed` or `tidy`)
-- download the dataset on this week's Moodle section
+- download [the dataset](https://osf.io/ushpw) from the workshop repo [from @chromy_number_2023]
   + *or*, move a dataset of your own to this folder
 
 ### `scripts/`
@@ -366,12 +387,18 @@ df_data <- read.csv(here("data", "data_lifetime_pilot.csv"))
 df_data <- read.csv(here::here("data", "data_lifetime_pilot.csv"))
 ```
 
+- note that I stored the data with the prefix `df_`
+  + `df` stands for dataframe
+- I recommend using object-type defining prefixes for all objects in your Environment
+  + e.g., `fit_` for models, `fig_` for figures, `sum_` for summaries, `tbl_` for tables, etc.
+
 ## {.unlisted .unnumbered}
 
 ::: {.callout-tip}
 # Reproduce your analysis
 
-1. Make sure you save your script, then close your Rproject.
+1. Perform some data exploration (e.g., with `names()`, `summary()`, `dplyr::glimpse()`, whatever you typically do)
+1. Save your script, then close RStudio/your Rproject.
 2. Re-open the project. Can you re-run the script?
 :::
 
@@ -387,7 +414,7 @@ Today we learned...
 
 ---
 nocite: |
-  @noauthor_what_nodate-1
+  @bryan_what_nodate-1
   @bryan_chapter_nodate
   @noauthor_using_2024
 ---

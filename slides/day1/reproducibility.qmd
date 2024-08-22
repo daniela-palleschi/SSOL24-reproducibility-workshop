@@ -213,7 +213,7 @@ print_image(here::here("media/Open_Sci_collab_2015_replication-effects.png"))
 **Replication**
 
 - re-running a previous experiment, ideally with the same materials, set-up, etc. 
-- ideally the same analysis workflow as the original study would also be used (i.e., like reproducing the analyses but with new data)
+- ideally the same analysis workflow as the original study (i.e., like reproducing the analyses but with new data)
 - aim: test whether results are replicated with new data in terms of direction and magnitude
 
 :::
@@ -221,7 +221,7 @@ print_image(here::here("media/Open_Sci_collab_2015_replication-effects.png"))
 :::
 
 - in short:
-  - reproducibility = re-analyses of the *same data*
+  - reproducibility = re-analysis of the *same data*
   - replication = collection of *new data*
 
 # Why implement reproducibility in my workflow?
@@ -235,7 +235,11 @@ print_image(here::here("media/Open_Sci_collab_2015_replication-effects.png"))
 
 # How to implement reproducibility?
 
-- broadly speaking, think of the FAIR principles of data sharing
+- not exactly straightforward
+  + there are degrees of reproducibility
+  + the rest of our time will be spent on this topic
+- sharing code and data is a first step
+  + think of the FAIR principles of data sharing
   + apply them to sharing analyses as well
 
 ## Practice FAIR principles

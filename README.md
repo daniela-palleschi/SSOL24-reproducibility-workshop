@@ -15,6 +15,8 @@ Teaching materials for the 4-day workshop 'Open Science Practices for Linguistic
 
   - `chromy_et-al_2023_English_final.csv` example self-paced reading dataset*
 
-\*[L1 English experiment](https://osf.io/2kjy5/) dataset from:
+\*[L1 English experiment](https://osf.io/ygp2t) dataset from:
 
-Lacina, R., Chromý, J., Brand, J., Laurinavichyute, A., & Vanek, N. (2024, April 16). Agreement attraction in English and Czech: A direct experimental comparison. [https://doi.org/10.17605/OSF.IO/2KJY5](https://doi.org/10.17605/OSF.IO/2KJY5)
+- **OSF repo:** Lacina, R., Chromý, J., Brand, J., Laurinavichyute, A., & Vanek, N. (2024, April 16). Agreement attraction in English and Czech: A direct experimental comparison. [https://doi.org/10.17605/OSF.IO/2KJY5](https://doi.org/10.17605/OSF.IO/2KJY5)
+
+- **From the publication:** Chromý, J., Brand, J., Laurinavichyute, A., & Lacina, R. (2023). Number agreement attraction in Czech and English comprehension: A direct experimental comparison. *Glossa Psycholinguistics*, 2(1), 1–20. [https://doi.org/10.5070/G6011235](https://doi.org/10.5070/G6011235)

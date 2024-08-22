@@ -125,6 +125,7 @@ There is currently a wealth of literature on the topic of reproducibility, both 
 - @nagler_coding_1995
 - @bowers_how_2016
 - @wilson_good_2017
+- @seibold_6_nodate
 
 For a book-length treatment of R-specific reproducible workflows:
 
@@ -138,3 +139,4 @@ And for an overview of R-specific data analysis suggestions, I recommend the fol
 For more general discussions on Open Science Practices:
 
 - @kathawalla_easing_2021
+- @cruwell_seven_2019

@@ -4,7 +4,12 @@ subtitle: "Creating and maintaining project-relative package libraries with `ren
 author: "Daniela Palleschi"
 institute: Humboldt-Universität zu Berlin
 lang: en
-date: 2024-08-23
+date: 2024-08-22
+date-format: "ddd MMM D, YYYY"
+date-modified: last-modified
+language: 
+  title-block-published: "Workshop Day 2"
+  title-block-modified: "Last Modified"
 format: 
   html:
     output-file: packages.html
@@ -21,7 +26,7 @@ format:
   revealjs:
     footer: "SSOL 2024 - Reproducibility Workshop"
     output-file: packages_slides.html
-    include-in-header: ../../mathjax.html # for multiple equation hyperrefs
+    include-in-header: ../../../mathjax.html # for multiple equation hyperrefs
     code-overflow: wrap
     theme: [dark]
     width: 1600
@@ -55,7 +60,7 @@ format:
 editor_options: 
   chunk_output_type: console
 bibliography: references.bib
-csl: ../../apa.csl
+csl: ../../../apa.csl
 execute:
   echo: true
   eval: false
@@ -493,7 +498,14 @@ renv::restore()
   + will then install the package versions that were available at the given date
 - issues can arise when package versions were built on a previous version of R, and are no longer supported
   + this can cause the installation to fail (just like with `renv`)
-  
+
+## Posit Public Package Manager
+
+- Posit (formerly called RStudio, the parent company of R) has a public package manager: [https://packagemanager.posit.co/client/#/](https://packagemanager.posit.co/client/#/)
+- you can select a snapshot of the CRAN at a specific date: [https://packagemanager.posit.co/client/#/repos/cran/setup](https://packagemanager.posit.co/client/#/repos/cran/setup)
+  + **Snapshots:** *do you want to freeze package versions to enhance reproducibility?*: Select *Yes, always install packages from the date I choose*
+  + follow the rest of the instructions
+
 # Session Info
 
 - whether you're using `renv` or not, *always* end a script with `sessionInfo()`
