@@ -602,7 +602,7 @@ Daniela Palleschi
 <li class="fragment">native support for Julia</li>
 </ul>
 </li>
-</ul></section><section id="r-v.-rmarkdown-v.-quarto-1" class="title-slide slide level3 unlisted unnummbered center"><h3>R v. Rmarkdown v. Quarto</h3>
+</ul></section><section id="section-1" class="title-slide slide level3 unlisted unnummbered center"><h3></h3>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -635,7 +635,13 @@ Daniela Palleschi
 </li>
 <li class="fragment">there are many document formatting and customisation options that we won’t cover in this course</li>
 <li class="fragment">but for example I have many YAML formatting options in the source code of my slides</li>
-</ul></section><section id="yaml-1" class="title-slide slide level3 unlisted unnumbered center scrollable"><h3>YAML</h3>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="sc">---</span></span>
+<span id="cb3-2"><a></a>title<span class="sc">:</span> <span class="st">"My title"</span></span>
+<span id="cb3-3"><a></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="yaml-1" class="title-slide slide level3 unlisted unnumbered center scrollable"><h3>YAML</h3>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -653,13 +659,13 @@ Daniela Palleschi
 <li>add a table of contents (Table of Contents = <code>toc</code>) by changing <code>format</code> so that it looks like this:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="sc">---</span></span>
-<span id="cb3-2"><a></a>title<span class="sc">:</span> <span class="st">"Dynamic reports"</span></span>
-<span id="cb3-3"><a></a>author<span class="sc">:</span> <span class="st">"Daniela Palleschi"</span></span>
-<span id="cb3-4"><a></a>format<span class="sc">:</span></span>
-<span id="cb3-5"><a></a>  pdf<span class="sc">:</span></span>
-<span id="cb3-6"><a></a>    toc<span class="sc">:</span> true</span>
-<span id="cb3-7"><a></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="sc">---</span></span>
+<span id="cb4-2"><a></a>title<span class="sc">:</span> <span class="st">"Dynamic reports"</span></span>
+<span id="cb4-3"><a></a>author<span class="sc">:</span> <span class="st">"Daniela Palleschi"</span></span>
+<span id="cb4-4"><a></a>format<span class="sc">:</span></span>
+<span id="cb4-5"><a></a>  pdf<span class="sc">:</span></span>
+<span id="cb4-6"><a></a>    toc<span class="sc">:</span> true</span>
+<span id="cb4-7"><a></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="5" type="1">
 <li>Render the document. Do you see the changes?</li>
@@ -690,9 +696,9 @@ Daniela Palleschi
 <li class="fragment">R code goes in code chunks:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a></a><span class="in">2+2</span></span>
-<span id="cb4-3"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a></a><span class="in">2+2</span></span>
+<span id="cb5-3"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -703,14 +709,14 @@ Daniela Palleschi
 <li class="fragment">or use the keyboard shortcut: <code>Cmd+Opt+I</code> (Mac) / <code>Ctrl+Alt+I</code> (Windows)</li>
 </ul>
 </li>
-</ul></section><section id="structuring-and-code-chunks" class="title-slide slide level3 unlisted unnumbered center scrollable"><h3>Structuring and Code Chunks</h3>
+</ul></section><section id="adding-content" class="title-slide slide level3 unlisted unnumbered center scrollable"><h3>Adding content</h3>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Adding content</strong></p>
+<p><strong>Adding structure and code chunks</strong></p>
 </div>
 <div class="callout-content">
 <div>
@@ -753,7 +759,7 @@ Daniela Palleschi
 </li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="tips-and-tricks" class="title-slide slide level1 center"><h1>Tips and tricks</h1>
 <ul>
@@ -780,11 +786,11 @@ Daniela Palleschi
 </ul>
 </li>
 </ul></section><section id="hands-on-working-with-quarto" class="title-slide slide level1 center"><h1>Hands-on: working with Quarto</h1>
-<p>Follow the instructions on the workshop website: <a href="https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html">https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html</a></p>
+<p>Follow the instructions on the workshop website: <a href="https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html#hands-on-working-with-quarto">Hands-on: working with Quarto</a></p>
 </section><section id="session-info-1" class="title-slide slide level1 unnumbered smaller scrollable"><h1>Session Info</h1>
 <p>My session info.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.0 (2024-04-24)
 Platform: aarch64-apple-darwin20

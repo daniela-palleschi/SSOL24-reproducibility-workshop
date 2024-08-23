@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/examples/chromy-2023_eda.html</loc>
-    <lastmod>2024-08-19T08:23:26.863Z</lastmod>
+    <lastmod>2024-08-23T09:10:33.624Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day1/R-workflow/R-workflow.html</loc>
@@ -22,11 +22,11 @@
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html</loc>
-    <lastmod>2024-08-22T21:24:33.842Z</lastmod>
+    <lastmod>2024-08-23T09:08:58.022Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code_slides.html</loc>
-    <lastmod>2024-08-22T21:24:33.842Z</lastmod>
+    <lastmod>2024-08-23T09:08:58.022Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/index.html</loc>
@@ -58,6 +58,6 @@
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/examples/literate-programming.html</loc>
-    <lastmod>2024-08-22T21:03:19.651Z</lastmod>
+    <lastmod>2024-08-23T08:43:19.200Z</lastmod>
   </url>
 </urlset>
