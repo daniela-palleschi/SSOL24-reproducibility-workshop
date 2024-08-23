@@ -128,6 +128,13 @@ df_chromy |>
 
 4465 correct responses overall, 287 incorrect.
 
+# SessionInfo
+
+```{r}
+sessionInfo()
+```
+
+
 
 
 
