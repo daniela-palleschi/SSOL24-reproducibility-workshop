@@ -224,7 +224,7 @@ summary(df_phone)
     -   native support for Julia
 
 ::: {.content-visible when-format="revealjs"}
-### R v. Rmarkdown v. Quarto {.unlisted .unnummbered}
+### {.unlisted .unnummbered}
 :::
 
 ::: callout-tip
@@ -246,6 +246,13 @@ Run the following in the Console: `RStudio.Version()$version`
   + also formatting information, e.g. type of output file
 - there are many document formatting and customisation options that we won't cover in this course 
 - but for example I have many YAML formatting options in the source code of my slides
+
+```{r}
+#| eval: false
+---
+title: "My title"
+---
+```
 
 ::: {.content-visible when-format="revealjs"}
 ### YAML {.unlisted .unnumbered}
@@ -301,11 +308,11 @@ format:
   + or use the keyboard shortcut: `Cmd+Opt+I` (Mac) / `Ctrl+Alt+I` (Windows)
   
 ::: {.content-visible when-format="revealjs"}
-### Structuring and Code Chunks {.unlisted .unnumbered}
+### Adding content {.unlisted .unnumbered}
 :::
 
 ::: callout-tip
-#### Adding content
+#### Adding structure and code chunks
 
 ::: nonincremental
 
@@ -351,7 +358,7 @@ sessionInfo()
 # Hands-on: working with Quarto
 
 ::: {.content-visible when-format="revealjs"}
-Follow the instructions on the workshop website: [https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html](https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html)
+Follow the instructions on the workshop website: [Hands-on: working with Quarto](https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day3/repro_code.html#hands-on-working-with-quarto)
 :::
 
 ::: {.content-visible unless-format="revealjs"}
@@ -364,7 +371,7 @@ If you've never worked with Rmarkdown or Quarto before, try the following task. 
 - a README file in the project folder, and any other large folders
 - code that runs if you try it
 
-::: {.callout-note collapse=true} 
+::: {.callout-note} 
 ## Task: Editing your Quarto document {.nonincremental}
 
 1. In the `YAML` (meta document info between `---`):
@@ -416,7 +423,7 @@ Render the document. If it works, continue. If not, check that you aren't missin
 :::
 
 :::{.callout-warning collapse=true}
-## Reveal Quarto syntax
+## Reveal a solution
 
 ```{r echo = FALSE, comment = "", filename="Reveal correct code"}
 cat(readr::read_file(here::here("examples/literate-programming.qmd")))
