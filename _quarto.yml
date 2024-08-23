@@ -33,8 +33,8 @@ website:
       contents:
       - slides/day3/repro-code.qmd
     - section: "Day 4: Publishing and Peer Review"
-      # contents:
-        # - slides/day4/osf-code_review.qmd
+      contents:
+      - slides/day4/osf-code_review.qmd
 
     # - references.qmd
 # 

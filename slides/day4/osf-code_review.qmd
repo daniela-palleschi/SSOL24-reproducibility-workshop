@@ -150,7 +150,7 @@ magick::image_read(here::here("media/FAIR_nlm_nih.png"))
 1. Sign in to the OSF
 2. Click on 'Create new project'
     + provide a name such as 'Open Science Practices: Reproducibility coursework (SoSe2024)'
-    + **Important**: set storage location to `Germany - Frankfurt`
+    + **Important**: set storage location to `Germany - Frankfurt` or some other place relevant for your institution (for legal Data Protection reasons)
     + add some concise description
 3. Navigate to your project and explore the page and tabs
 
@@ -185,27 +185,25 @@ magick::image_read(here::here("media/FAIR_nlm_nih.png"))
 
 ## Adding data
 
-- under `data`, add the three `csv` files you presumably have in the same folder in your project (drag and drop them, or select the big green `+`)
-  + `data_lifetime_pilot.csv`
-  + `tidy_data_lifetime_pilot.csv`
-  + `tidy_data_lifetime_pilot_dictionary.csv`
-
+- under `data`, add the `csv` file you presumably have in the same folder in your project (drag and drop, or select the big green `+`)
+  + `chromy_et-al_2023_English_final.csv`
 
 ## Adding scripts
 
-- under the `scripts` folder add the scripts where we worked with the data:
-  + our wrangling script
-  + our tables script
-  + our data visualisation script
+- under the `scripts` folder add the scripts where we worked with the data
 
-### Adding PDF output
+### Adding output files
 
-- optionally, you can also upload the PDF output produced by each script
-  + this means that anybody viewing your project doesn't have to download the Quarto scripts to see what was done (as they aren't viewable in-browser)
+- you can also upload output produced by each script (e.g., HTML files)
+- outputting PDF files makes this a bit easier, though
+  + anybody viewing your project doesn't have to download the Quarto scripts to see what was done (as `.qmd` and `.html` files aren't viewable in-browser on the OSF)
+  + this also makes it easier to compare the reproduced analyses to the shared analyses, because re-rendering the downloaded script will replace the output file locally (but the OSF version will remain unchanged, of course)
+  + to do so you'll need to have an LaTeX distribution on your machine
+  + or you could install [`tinytex`](https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day2/packages/packages.html)
 
 ### Structuring your `scripts/` folder
 
-- unlike the `data` folder, how you organise and name this folder on OSF is more flexible
+- unlike the `data` folder, how you organise and name the `scripts/` folder on OSF is more flexible
   + because we (likely) aren't accessing these scripts from somewhere else in the project (unlike loading data from the `data` folder)
 - you can include them in sub-folders if you prefer
   + the structure of this folder is organisational, and not fundamental to reproducibility
@@ -226,11 +224,10 @@ At this point, your OSF project should
 - be private (this is the default for a new project)
 - have me as a collaborator
 - contain the folders `data/` and `scripts/`
-  + which in turn contain the 3 `CSV` files and 3 Quarto scripts
-  + ideally `scripts/` will also contain the 3 PDF script outputs
+  + which in turn contain the CSV file and your Quarto script(s)
+  + ideally `scripts/` will also contain the output file(s)
 :::
 :::
-
 
 # Checking reproducibility
 
@@ -296,49 +293,8 @@ magick::image_read(here::here("media/osf_download_zip.png"))
 
 - included the `.Rproj` file won't mean that the person who downloads it will also have our packages
   + e.g., they might not have the `here` package, and won't even be able to use our code to load in the data
-- as we discussed some weeks ago, this is what the `renv` package does
-  + we created project library, i.e., a lockfile (`renv.lock`) which is a project
-
-::: {.content-visible when-format="revealjs"}
-## {-}
-:::
-
-::: {.callout-note}
-## Checklist: Share `renv.lock`
-
-Add the `renv.lock` file to your OSF project repo (in the project root directory).
-
-:::
-
-## Auto-loaders
-
-- we also need to include our `.Rprofile` file
-  + this is our auto-loader
-  + whenever we open the R project, this file will be run
-- it currently contains just `source("renv/activate.R")`
-  + this means: when you open the R project, run the `renv/activate.R` file
-- so, we need to include our `renv/activate.R` file in our OSF repo
-  + including these two will automatically install the relevant version of `renv`
-
-::: {.content-visible when-format="revealjs"}
-## {.smaller}
-:::
-
-::: {.callout-tip}
-## `.Rprofile` in Finder
-
-Some files are usually invisible on a Mac, such as those that start with dot (like `.Rprofile`). This makes it difficult to simply drag and drop the `.Rprofile` file to the OSF. To make such files viewable in Finder, navigate to the relevant project folder and use the keyboard shortcut `Ctrl + Shift + Dot`. These files will then appear greyed out.
-
-```{r}
-#| echo: false
-#| out-width: "100%"
-#| fig-align: center
-#| label: fig-Rprofile
-#| fig-cap: "Use the shortcut `Ctrl + Shift + Dot` to view hidden files on a Mac"
-magick::image_read(here::here("media/finder_Rprofile.png"))
-```
-
-:::
+- if you want to learn how to help others restore your exact package library (as long as they're using the same version of R), go through the materials for [Package Management](https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day2/packages/packages.html)
+  + and then [this page from another course I gave](https://daniela-palleschi.github.io/r4repro_SoSe2024/slides/11-osf/osf.html#packages) to see how to share the relevant files
 
 ## README
 
@@ -347,45 +303,13 @@ magick::image_read(here::here("media/finder_Rprofile.png"))
 - the project `README.md` will ideally have information that is useful once the project is downloaded in its entirety
   + e.g., brief info about the project/data
   + description of the folder/file structure
-  + any info required for reproducibility
-- e.g., anybody who downloads the project will need to run `renv::restore()` to restore your project library (but this will only work if they're using the same R version!)
-  + so be sure to include that info!
-
-::: {.content-visible when-format="revealjs"}
-## REAMDE renv explanation
-:::
-
-For example, you could add something like this:
-
-```{markdown}
-**Reproduce analyses**: Once you open this project, `renv` will automatically be installed. After this is complete, you please run `renv::restore()` to restore the project package library. This will not affect the package versions you have already installed globally on your machine.
-```
-
-::: {.content-visible when-format="revealjs"}
-## {-}
-:::
-
-::: {.callout-note}
-## Checklist: Share `.Rprofile` and `renv/activate.R`
-
-::: nonincremental
-
-Your project should now have
-
-- `.Rprofile` in the project root directory
-- `renv/activate.R` in the project root directory
-    + i.e., a folder `renv/` in the root directory
-    + and the `activate.R` file in this `renv/` folder
-- a `README.md` file in the root directory
-
-:::
-:::
+  + any info required for reproducibility (e.g., you could mention needing the `here()` package to read in data)
 
 ## OSF repo structure
 
 ::: {.content-hidden when-format="revealjs"}
-- your OSF project should look something like @fig-osf_download_full_zip
-  + N.B., there are more files under `scripts/`
+- your OSF project should look more of less like @fig-osf_download_full_zip (with different data file name(s))
+  + the `.Rprofile`, `renv/` folder, and `renv.lock` files are not relevant if you didn't work through the 'Project Management' materials
 :::
 
 ```{r}
@@ -419,8 +343,8 @@ magick::image_read(here::here("media/osf_download_full_zip.png"))
 
 ## Swapping project URLs
 
-- go to Moodle and add your OSF repo URL
-- go to someone else's OSF repo and download their project
+- go to [this link](https://box.hu-berlin.de/f/f7ba9bdf2ba64325bc8f/) and add your OSF repo URL, making note of your row number
+- go to the OSF repo on the row below your own and download the project
   + inspect the project metafiles (e.g., README)
   + try to reproduce the analyses, can you?
 
@@ -433,12 +357,13 @@ magick::image_read(here::here("media/osf_download_full_zip.png"))
 
 ::: nonincremental
 
-If you have a relatively large project with your name at the beginning of multiple scripts, it can be tedious to manually remove it. And you might not be sure you actually took your name out of everything!
+If you have a relatively large project with your name at the beginning of multiple scripts, it can be tedious to manually remove it for double-blind peer review. And you might not be sure you actually took your name out of everything!
 
 This can be used using RStudio's [Global Find](https://posit.co/blog/rstudio-1-3-the-little-things/):
 
 + press `Cmd+Shift+F`
-+ in the pop-up, choose your filepath (for me: the OSF folder *only*) and hit enter
++ add your name (or anything else you want anonymised) under `Find:`
++ under `Search in:`, choose your filepath (for me: the OSF folder *only*) and hit enter
 + then toggle to 'Replace' when a tab pops up next to the Terminal
 + type in your replacement (e.g., `[Anonymized for peer review]`), and hit "Replace All"
 
@@ -446,18 +371,6 @@ This can be used using RStudio's [Global Find](https://posit.co/blog/rstudio-1-3
 
 After the manuscript is accepted, you can then reverse this step: use the Global Find to replace `[Anonymized for peer review]` with your name! This is why I suggest surrounding the phrase with `[]`, it ensures you don't accidentally replace the string 'anonymized for peer review' elsewhere in your files (e.g., maybe you wrote in some analysis plan "all scripts will be anonymized for peer review", which would then be changed to "all scripts will be Daniela Palleschi" if I had replaced `Anonymized for peer review` with my name).
 :::
-
-:::
-
-# Quiz 2: Code Review Q&A
-
-::: nonincremental
-
-- there is a Code Review Q&A on Moodle, which *counts towards course credit*
-  + consists of mostly true/false questions about your code review
-- do this quiz by next week
-  + nobody is penalised if the code isn't reproducible
-- the point is to learn how to do a code review and how to improve our own projects to improve reproducibility
 
 :::
 
