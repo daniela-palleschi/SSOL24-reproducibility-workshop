@@ -29,7 +29,7 @@ df_chromy <- read_csv(here("data", "chromy_et-al_2023_English_final.csv")) |>
   rename_at(vars(starts_with("r_t")), ~ str_replace(., "r_t", "rt_"))
 ```
 
-# Variables
+# Explore dataset
 
 Check out variables.
 
@@ -74,7 +74,7 @@ df_chromy |>
 
 Each participant saw 24 unique items.
 
-# Response time distributions
+## Response time distributions
 
 ```{r}
 df_chromy |> 
@@ -117,7 +117,7 @@ df_chromy |>
 
 Sentence region 8: longer RTs for mismatches with singular attributes (i.e., grammaticality). Opposite (but smaller) effect for plural attributes in this region: longer RTs for matching attribute and verb number marking (agreement attraction).
 
-# Accuracy distributions
+## Accuracy distributions
 
 ```{r}
 df_chromy |> 
@@ -128,7 +128,7 @@ df_chromy |>
 
 4465 correct responses overall, 287 incorrect.
 
-# SessionInfo
+# Session Info
 
 ```{r}
 sessionInfo()
