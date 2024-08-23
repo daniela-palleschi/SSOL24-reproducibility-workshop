@@ -500,8 +500,7 @@ Figure&nbsp;1: Source: <a href="https://www.nlm.nih.gov/oet/ed/cde/tutorial/02-3
 <ul>
 <li class="fragment">provide a name such as ‘Open Science Practices: Reproducibility coursework (SoSe2024)’</li>
 <li class="fragment">
-<strong>Important</strong>: set storage location to <code>Germany - Frankfurt</code>
-</li>
+<strong>Important</strong>: set storage location to <code>Germany - Frankfurt</code> or some other place relevant for your institution (for legal Data Protection reasons)</li>
 <li class="fragment">add some concise description</li>
 </ul>
 </li>
@@ -553,32 +552,29 @@ Figure&nbsp;1: Source: <a href="https://www.nlm.nih.gov/oet/ed/cde/tutorial/02-3
 </li>
 </ul></section><section id="adding-data" class="title-slide slide level2 center"><h2>Adding data</h2>
 <ul>
-<li class="fragment">under <code>data</code>, add the three <code>csv</code> files you presumably have in the same folder in your project (drag and drop them, or select the big green <code>+</code>)
+<li class="fragment">under <code>data</code>, add the <code>csv</code> file you presumably have in the same folder in your project (drag and drop, or select the big green <code>+</code>)
 <ul>
-<li class="fragment"><code>data_lifetime_pilot.csv</code></li>
-<li class="fragment"><code>tidy_data_lifetime_pilot.csv</code></li>
-<li class="fragment"><code>tidy_data_lifetime_pilot_dictionary.csv</code></li>
+<li class="fragment"><code>chromy_et-al_2023_English_final.csv</code></li>
 </ul>
 </li>
 </ul></section><section id="adding-scripts" class="title-slide slide level2 center"><h2>Adding scripts</h2>
 <ul>
-<li class="fragment">under the <code>scripts</code> folder add the scripts where we worked with the data:
+<li class="fragment">under the <code>scripts</code> folder add the scripts where we worked with the data</li>
+</ul></section><section id="adding-output-files" class="title-slide slide level3 center"><h3>Adding output files</h3>
 <ul>
-<li class="fragment">our wrangling script</li>
-<li class="fragment">our tables script</li>
-<li class="fragment">our data visualisation script</li>
-</ul>
+<li class="fragment">you can also upload output produced by each script (e.g., HTML files)</li>
+<li class="fragment">outputting PDF files makes this a bit easier, though
+<ul>
+<li class="fragment">anybody viewing your project doesn’t have to download the Quarto scripts to see what was done (as <code>.qmd</code> and <code>.html</code> files aren’t viewable in-browser on the OSF)</li>
+<li class="fragment">this also makes it easier to compare the reproduced analyses to the shared analyses, because re-rendering the downloaded script will replace the output file locally (but the OSF version will remain unchanged, of course)</li>
+<li class="fragment">to do so you’ll need to have an LaTeX distribution on your machine</li>
+<li class="fragment">or you could install <a href="https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day2/packages/packages.html"><code>tinytex</code></a>
 </li>
-</ul></section><section id="adding-pdf-output" class="title-slide slide level3 center"><h3>Adding PDF output</h3>
-<ul>
-<li class="fragment">optionally, you can also upload the PDF output produced by each script
-<ul>
-<li class="fragment">this means that anybody viewing your project doesn’t have to download the Quarto scripts to see what was done (as they aren’t viewable in-browser)</li>
 </ul>
 </li>
 </ul></section><section id="structuring-your-scripts-folder" class="title-slide slide level3 center"><h3>Structuring your <code>scripts/</code> folder</h3>
 <ul>
-<li class="fragment">unlike the <code>data</code> folder, how you organise and name this folder on OSF is more flexible
+<li class="fragment">unlike the <code>data</code> folder, how you organise and name the <code>scripts/</code> folder on OSF is more flexible
 <ul>
 <li class="fragment">because we (likely) aren’t accessing these scripts from somewhere else in the project (unlike loading data from the <code>data</code> folder)</li>
 </ul>
@@ -607,8 +603,8 @@ Figure&nbsp;1: Source: <a href="https://www.nlm.nih.gov/oet/ed/cde/tutorial/02-3
 <li>have me as a collaborator</li>
 <li>contain the folders <code>data/</code> and <code>scripts/</code>
 <ul>
-<li>which in turn contain the 3 <code>CSV</code> files and 3 Quarto scripts</li>
-<li>ideally <code>scripts/</code> will also contain the 3 PDF script outputs</li>
+<li>which in turn contain the CSV file and your Quarto script(s)</li>
+<li>ideally <code>scripts/</code> will also contain the output file(s)</li>
 </ul>
 </li>
 </ul>
@@ -699,71 +695,12 @@ Figure&nbsp;2: How to download an OSF repo
 <li class="fragment">e.g., they might not have the <code>here</code> package, and won’t even be able to use our code to load in the data</li>
 </ul>
 </li>
-<li class="fragment">as we discussed some weeks ago, this is what the <code>renv</code> package does
+<li class="fragment">if you want to learn how to help others restore your exact package library (as long as they’re using the same version of R), go through the materials for <a href="https://daniela-palleschi.github.io/SSOL24-reproducibility-workshop/slides/day2/packages/packages.html">Package Management</a>
 <ul>
-<li class="fragment">we created project library, i.e., a lockfile (<code>renv.lock</code>) which is a project</li>
+<li class="fragment">and then <a href="https://daniela-palleschi.github.io/r4repro_SoSe2024/slides/11-osf/osf.html#packages">this page from another course I gave</a> to see how to share the relevant files</li>
 </ul>
 </li>
-</ul></section><section id="section-1" class="title-slide slide level2 unnumbered center"><h2></h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Checklist: Share <code>renv.lock</code></strong></p>
-</div>
-<div class="callout-content">
-<p>Add the <code>renv.lock</code> file to your OSF project repo (in the project root directory).</p>
-</div>
-</div>
-</div>
-</section><section id="auto-loaders" class="title-slide slide level2 center"><h2>Auto-loaders</h2>
-<ul>
-<li class="fragment">we also need to include our <code>.Rprofile</code> file
-<ul>
-<li class="fragment">this is our auto-loader</li>
-<li class="fragment">whenever we open the R project, this file will be run</li>
-</ul>
-</li>
-<li class="fragment">it currently contains just <code>source("renv/activate.R")</code>
-<ul>
-<li class="fragment">this means: when you open the R project, run the <code>renv/activate.R</code> file</li>
-</ul>
-</li>
-<li class="fragment">so, we need to include our <code>renv/activate.R</code> file in our OSF repo
-<ul>
-<li class="fragment">including these two will automatically install the relevant version of <code>renv</code>
-</li>
-</ul>
-</li>
-</ul></section><section id="section-2" class="title-slide slide level2 smaller center"><h2></h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><code>.Rprofile</code> in Finder</strong></p>
-</div>
-<div class="callout-content">
-<p>Some files are usually invisible on a Mac, such as those that start with dot (like <code>.Rprofile</code>). This makes it difficult to simply drag and drop the <code>.Rprofile</code> file to the OSF. To make such files viewable in Finder, navigate to the relevant project folder and use the keyboard shortcut <code>Ctrl + Shift + Dot</code>. These files will then appear greyed out.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-Rprofile" class="quarto-figure quarto-figure-center quarto-float" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-Rprofile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Use the shortcut <code>Ctrl + Shift + Dot</code> to view hidden files on a Mac
-</figcaption><div aria-describedby="fig-Rprofile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="osf-code_review_files/figure-revealjs/fig-Rprofile-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%">
-</div>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="readme" class="title-slide slide level2 center"><h2>README</h2>
+</ul></section><section id="readme" class="title-slide slide level2 center"><h2>README</h2>
 <ul>
 <li class="fragment">remember to update your README accordingly!
 <ul>
@@ -774,51 +711,13 @@ Figure&nbsp;3: Use the shortcut <code>Ctrl + Shift + Dot</code> to view hidden f
 <ul>
 <li class="fragment">e.g., brief info about the project/data</li>
 <li class="fragment">description of the folder/file structure</li>
-<li class="fragment">any info required for reproducibility</li>
+<li class="fragment">any info required for reproducibility (e.g., you could mention needing the <code>here()</code> package to read in data)</li>
 </ul>
 </li>
-<li class="fragment">e.g., anybody who downloads the project will need to run <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code> to restore your project library (but this will only work if they’re using the same R version!)
-<ul>
-<li class="fragment">so be sure to include that info!</li>
-</ul>
-</li>
-</ul></section><section id="reamde-renv-explanation" class="title-slide slide level2 center"><h2>REAMDE renv explanation</h2>
-<p>For example, you could add something like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a></a>**Reproduce analyses**: Once you open this project, <span class="in">`renv`</span> will automatically be installed. After this is complete, you please run <span class="in">`renv::restore()`</span> to restore the project package library. This will not affect the package versions you have already installed globally on your machine.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section id="section-3" class="title-slide slide level2 unnumbered center"><h2></h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Checklist: Share <code>.Rprofile</code> and <code>renv/activate.R</code></strong></p>
-</div>
-<div class="callout-content">
-<div>
-<p>Your project should now have</p>
-<ul>
-<li>
-<code>.Rprofile</code> in the project root directory</li>
-<li>
-<code>renv/activate.R</code> in the project root directory
-<ul>
-<li>i.e., a folder <code>renv/</code> in the root directory</li>
-<li>and the <code>activate.R</code> file in this <code>renv/</code> folder</li>
-</ul>
-</li>
-<li>a <code>README.md</code> file in the root directory</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section><section id="osf-repo-structure" class="title-slide slide level2 center"><h2>OSF repo structure</h2>
+</ul></section><section id="osf-repo-structure" class="title-slide slide level2 center"><h2>OSF repo structure</h2>
 
 <img data-src="osf-code_review_files/figure-revealjs/fig-osf_download_full_zip-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"><p class="caption">
-Figure&nbsp;4: Your OSF should now look like this
+Figure&nbsp;3: Your OSF should now look like this
 </p></section></section><section><section id="code-review" class="title-slide slide level1 center"><h1>Code review</h1>
 <ul>
 <li class="fragment">we’ll again try to reproduce our own analyses before sharing the OSF project with a peer</li>
@@ -852,14 +751,14 @@ Figure&nbsp;4: Your OSF should now look like this
 </li>
 </ul></section><section id="swapping-project-urls" class="title-slide slide level2 center"><h2>Swapping project URLs</h2>
 <ul>
-<li class="fragment">go to Moodle and add your OSF repo URL</li>
-<li class="fragment">go to someone else’s OSF repo and download their project
+<li class="fragment">go to <a href="https://box.hu-berlin.de/f/f7ba9bdf2ba64325bc8f/">this link</a> and add your OSF repo URL, making note of your row number</li>
+<li class="fragment">go to the OSF repo on the row below your own and download the project
 <ul>
 <li class="fragment">inspect the project metafiles (e.g., README)</li>
 <li class="fragment">try to reproduce the analyses, can you?</li>
 </ul>
 </li>
-</ul></section><section id="section-4" class="title-slide slide level2 unnumbered center"><h2></h2>
+</ul></section><section id="section-1" class="title-slide slide level2 unnumbered center"><h2></h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -870,12 +769,14 @@ Figure&nbsp;4: Your OSF should now look like this
 </div>
 <div class="callout-content">
 <div>
-<p>If you have a relatively large project with your name at the beginning of multiple scripts, it can be tedious to manually remove it. And you might not be sure you actually took your name out of everything!</p>
+<p>If you have a relatively large project with your name at the beginning of multiple scripts, it can be tedious to manually remove it for double-blind peer review. And you might not be sure you actually took your name out of everything!</p>
 <p>This can be used using RStudio’s <a href="https://posit.co/blog/rstudio-1-3-the-little-things/">Global Find</a>:</p>
 <ul>
 <li>press <code>Cmd+Shift+F</code>
 </li>
-<li>in the pop-up, choose your filepath (for me: the OSF folder <em>only</em>) and hit enter</li>
+<li>add your name (or anything else you want anonymised) under <code>Find:</code>
+</li>
+<li>under <code>Search in:</code>, choose your filepath (for me: the OSF folder <em>only</em>) and hit enter</li>
 <li>then toggle to ‘Replace’ when a tab pops up next to the Terminal</li>
 <li>type in your replacement (e.g., <code>[Anonymized for peer review]</code>), and hit “Replace All”</li>
 </ul>
@@ -885,23 +786,7 @@ Figure&nbsp;4: Your OSF should now look like this
 </div>
 </div>
 </div>
-</section></section><section id="quiz-2-code-review-qa" class="title-slide slide level1 center"><h1>Quiz 2: Code Review Q&amp;A</h1>
-<div>
-<ul>
-<li>there is a Code Review Q&amp;A on Moodle, which <em>counts towards course credit</em>
-<ul>
-<li>consists of mostly true/false questions about your code review</li>
-</ul>
-</li>
-<li>do this quiz by next week
-<ul>
-<li>nobody is penalised if the code isn’t reproducible</li>
-</ul>
-</li>
-<li>the point is to learn how to do a code review and how to improve our own projects to improve reproducibility</li>
-</ul>
-</div>
-</section><section id="learning-objectives-1" class="title-slide slide level1 unnumbered unlisted uncounted center"><h1>Learning objectives 🏁</h1>
+</section></section><section id="learning-objectives-1" class="title-slide slide level1 unnumbered unlisted uncounted center"><h1>Learning objectives 🏁</h1>
 <p>Today we…</p>
 <ul>
 <li class="fragment">set-up our first OSF projectc ✅</li>
@@ -910,7 +795,7 @@ Figure&nbsp;4: Your OSF should now look like this
 <li class="fragment">conducted a peer code review ✅</li>
 </ul></section><section id="session-info" class="title-slide slide level1 unnumbered center"><h1>Session Info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(), <span class="at">locale =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">print</span>(<span class="fu">sessionInfo</span>(), <span class="at">locale =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.0 (2024-04-24)
 Platform: aarch64-apple-darwin20

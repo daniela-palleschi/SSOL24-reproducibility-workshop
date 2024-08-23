@@ -758,21 +758,21 @@
     "href": "slides/day4/code-review_slides.html#adding-data",
     "title": "Publishing analyses + Peer code review",
     "section": "Adding data",
-    "text": "Adding data\n\nunder data, add the three csv files you presumably have in the same folder in your project (drag and drop them, or select the big green +)\n\ndata_lifetime_pilot.csv\ntidy_data_lifetime_pilot.csv\ntidy_data_lifetime_pilot_dictionary.csv"
+    "text": "Adding data\n\nunder data, add the csv file you presumably have in the same folder in your project (drag and drop, or select the big green +)\n\nchromy_et-al_2023_English_final.csv"
   },
   {
     "objectID": "slides/day4/code-review_slides.html#adding-scripts",
     "href": "slides/day4/code-review_slides.html#adding-scripts",
     "title": "Publishing analyses + Peer code review",
     "section": "Adding scripts",
-    "text": "Adding scripts\n\nunder the scripts folder add the scripts where we worked with the data:\n\nour wrangling script\nour tables script\nour data visualisation script"
+    "text": "Adding scripts\n\nunder the scripts folder add the scripts where we worked with the data"
   },
   {
     "objectID": "slides/day4/code-review_slides.html#section",
     "href": "slides/day4/code-review_slides.html#section",
     "title": "Publishing analyses + Peer code review",
     "section": "",
-    "text": "Checklist: Share data and code\n\n\n\nAt this point, your OSF project should\n\nbe private (this is the default for a new project)\nhave me as a collaborator\ncontain the folders data/ and scripts/\n\nwhich in turn contain the 3 CSV files and 3 Quarto scripts\nideally scripts/ will also contain the 3 PDF script outputs"
+    "text": "Checklist: Share data and code\n\n\n\nAt this point, your OSF project should\n\nbe private (this is the default for a new project)\nhave me as a collaborator\ncontain the folders data/ and scripts/\n\nwhich in turn contain the CSV file and your Quarto script(s)\nideally scripts/ will also contain the output file(s)"
   },
   {
     "objectID": "slides/day4/code-review_slides.html#download-osf-repo",
@@ -800,56 +800,21 @@
     "href": "slides/day4/code-review_slides.html#packages",
     "title": "Publishing analyses + Peer code review",
     "section": "Packages",
-    "text": "Packages\n\nincluded the .Rproj file won’t mean that the person who downloads it will also have our packages\n\ne.g., they might not have the here package, and won’t even be able to use our code to load in the data\n\n\nas we discussed some weeks ago, this is what the renv package does\n\nwe created project library, i.e., a lockfile (renv.lock) which is a project"
-  },
-  {
-    "objectID": "slides/day4/code-review_slides.html#section-1",
-    "href": "slides/day4/code-review_slides.html#section-1",
-    "title": "Publishing analyses + Peer code review",
-    "section": "",
-    "text": "Checklist: Share renv.lock\n\n\nAdd the renv.lock file to your OSF project repo (in the project root directory)."
-  },
-  {
-    "objectID": "slides/day4/code-review_slides.html#auto-loaders",
-    "href": "slides/day4/code-review_slides.html#auto-loaders",
-    "title": "Publishing analyses + Peer code review",
-    "section": "Auto-loaders",
-    "text": "Auto-loaders\n\nwe also need to include our .Rprofile file\n\nthis is our auto-loader\nwhenever we open the R project, this file will be run\n\n\nit currently contains just source(\"renv/activate.R\")\n\nthis means: when you open the R project, run the renv/activate.R file\n\n\nso, we need to include our renv/activate.R file in our OSF repo\n\nincluding these two will automatically install the relevant version of renv"
-  },
-  {
-    "objectID": "slides/day4/code-review_slides.html#section-2",
-    "href": "slides/day4/code-review_slides.html#section-2",
-    "title": "Publishing analyses + Peer code review",
-    "section": "",
-    "text": ".Rprofile in Finder\n\n\nSome files are usually invisible on a Mac, such as those that start with dot (like .Rprofile). This makes it difficult to simply drag and drop the .Rprofile file to the OSF. To make such files viewable in Finder, navigate to the relevant project folder and use the keyboard shortcut Ctrl + Shift + Dot. These files will then appear greyed out.\n\n\n\n\nFigure 3: Use the shortcut Ctrl + Shift + Dot to view hidden files on a Mac"
+    "text": "Packages\n\nincluded the .Rproj file won’t mean that the person who downloads it will also have our packages\n\ne.g., they might not have the here package, and won’t even be able to use our code to load in the data\n\n\nif you want to learn how to help others restore your exact package library (as long as they’re using the same version of R), go through the materials for Package Management\n\nand then this page from another course I gave to see how to share the relevant files"
   },
   {
     "objectID": "slides/day4/code-review_slides.html#readme",
     "href": "slides/day4/code-review_slides.html#readme",
     "title": "Publishing analyses + Peer code review",
     "section": "README",
-    "text": "README\n\nremember to update your README accordingly!\n\nthis can be updated as you add more to your project\n\n\nthe project README.md will ideally have information that is useful once the project is downloaded in its entirety\n\ne.g., brief info about the project/data\ndescription of the folder/file structure\nany info required for reproducibility\n\n\ne.g., anybody who downloads the project will need to run renv::restore() to restore your project library (but this will only work if they’re using the same R version!)\n\nso be sure to include that info!"
-  },
-  {
-    "objectID": "slides/day4/code-review_slides.html#reamde-renv-explanation",
-    "href": "slides/day4/code-review_slides.html#reamde-renv-explanation",
-    "title": "Publishing analyses + Peer code review",
-    "section": "REAMDE renv explanation",
-    "text": "REAMDE renv explanation\nFor example, you could add something like this:\n\n**Reproduce analyses**: Once you open this project, `renv` will automatically be installed. After this is complete, you please run `renv::restore()` to restore the project package library. This will not affect the package versions you have already installed globally on your machine."
-  },
-  {
-    "objectID": "slides/day4/code-review_slides.html#section-3",
-    "href": "slides/day4/code-review_slides.html#section-3",
-    "title": "Publishing analyses + Peer code review",
-    "section": "",
-    "text": "Checklist: Share .Rprofile and renv/activate.R\n\n\n\nYour project should now have\n\n\n.Rprofile in the project root directory\n\nrenv/activate.R in the project root directory\n\ni.e., a folder renv/ in the root directory\nand the activate.R file in this renv/ folder\n\n\na README.md file in the root directory"
+    "text": "README\n\nremember to update your README accordingly!\n\nthis can be updated as you add more to your project\n\n\nthe project README.md will ideally have information that is useful once the project is downloaded in its entirety\n\ne.g., brief info about the project/data\ndescription of the folder/file structure\nany info required for reproducibility (e.g., you could mention needing the here() package to read in data)"
   },
   {
     "objectID": "slides/day4/code-review_slides.html#osf-repo-structure",
     "href": "slides/day4/code-review_slides.html#osf-repo-structure",
     "title": "Publishing analyses + Peer code review",
     "section": "OSF repo structure",
-    "text": "OSF repo structure\n\n\nFigure 4: Your OSF should now look like this"
+    "text": "OSF repo structure\n\n\nFigure 3: Your OSF should now look like this"
   },
   {
     "objectID": "slides/day4/code-review_slides.html#sharing-your-project",
@@ -863,119 +828,182 @@
     "href": "slides/day4/code-review_slides.html#swapping-project-urls",
     "title": "Publishing analyses + Peer code review",
     "section": "Swapping project URLs",
-    "text": "Swapping project URLs\n\ngo to Moodle and add your OSF repo URL\ngo to someone else’s OSF repo and download their project\n\ninspect the project metafiles (e.g., README)\ntry to reproduce the analyses, can you?"
+    "text": "Swapping project URLs\n\ngo to this link and add your OSF repo URL, making note of your row number\ngo to the OSF repo on the row below your own and download the project\n\ninspect the project metafiles (e.g., README)\ntry to reproduce the analyses, can you?"
   },
   {
-    "objectID": "slides/day4/code-review_slides.html#section-4",
-    "href": "slides/day4/code-review_slides.html#section-4",
+    "objectID": "slides/day4/code-review_slides.html#section-1",
+    "href": "slides/day4/code-review_slides.html#section-1",
     "title": "Publishing analyses + Peer code review",
     "section": "",
-    "text": "Anonymising your scripts (optional)\n\n\n\nIf you have a relatively large project with your name at the beginning of multiple scripts, it can be tedious to manually remove it. And you might not be sure you actually took your name out of everything!\nThis can be used using RStudio’s Global Find:\n\npress Cmd+Shift+F\n\nin the pop-up, choose your filepath (for me: the OSF folder only) and hit enter\nthen toggle to ‘Replace’ when a tab pops up next to the Terminal\ntype in your replacement (e.g., [Anonymized for peer review]), and hit “Replace All”\n\nImportant: this will work for HTML and R/Quarto/Rmd scripts, but not for PDFs! so you might want to re-render all PDFs. As far as I can tell you have to re-render each PDF. If you’re working in a Quarto project (and not an .Rproj), then you can use quarto render subfoldername --to pdf in the Terminal to re-render only the OSF PDFs. We didn’t discuss Quarto projects in this course, however.\nAfter the manuscript is accepted, you can then reverse this step: use the Global Find to replace [Anonymized for peer review] with your name! This is why I suggest surrounding the phrase with [], it ensures you don’t accidentally replace the string ‘anonymized for peer review’ elsewhere in your files (e.g., maybe you wrote in some analysis plan “all scripts will be anonymized for peer review”, which would then be changed to “all scripts will be Daniela Palleschi” if I had replaced Anonymized for peer review with my name)."
+    "text": "Anonymising your scripts (optional)\n\n\n\nIf you have a relatively large project with your name at the beginning of multiple scripts, it can be tedious to manually remove it for double-blind peer review. And you might not be sure you actually took your name out of everything!\nThis can be used using RStudio’s Global Find:\n\npress Cmd+Shift+F\n\nadd your name (or anything else you want anonymised) under Find:\n\nunder Search in:, choose your filepath (for me: the OSF folder only) and hit enter\nthen toggle to ‘Replace’ when a tab pops up next to the Terminal\ntype in your replacement (e.g., [Anonymized for peer review]), and hit “Replace All”\n\nImportant: this will work for HTML and R/Quarto/Rmd scripts, but not for PDFs! so you might want to re-render all PDFs. As far as I can tell you have to re-render each PDF. If you’re working in a Quarto project (and not an .Rproj), then you can use quarto render subfoldername --to pdf in the Terminal to re-render only the OSF PDFs. We didn’t discuss Quarto projects in this course, however.\nAfter the manuscript is accepted, you can then reverse this step: use the Global Find to replace [Anonymized for peer review] with your name! This is why I suggest surrounding the phrase with [], it ensures you don’t accidentally replace the string ‘anonymized for peer review’ elsewhere in your files (e.g., maybe you wrote in some analysis plan “all scripts will be anonymized for peer review”, which would then be changed to “all scripts will be Daniela Palleschi” if I had replaced Anonymized for peer review with my name)."
   },
   {
     "objectID": "slides/day4/osf-code_review.html",
     "href": "slides/day4/osf-code_review.html",
     "title": "Publishing analyses + Peer code review",
     "section": "",
-    "text": "Today we will…\n\nset-up our first OSF project\nshare necessary files to make our OSF project reproducible\nconduct a code review of our own project\nconduct a peer code review"
+    "text": "Today we will…\n\nset-up our first OSF project\nshare necessary files to make our OSF project reproducible\nconduct a code review of our own project\nconduct a peer code review",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#private-or-public",
     "href": "slides/day4/osf-code_review.html#private-or-public",
     "title": "Publishing analyses + Peer code review",
     "section": "3.1 Private or public",
-    "text": "3.1 Private or public\n\nyou should notice near the top right corner a button ‘Make Public’\n\nthis tells you that your project is currently private\nthis means nobody can see it but you (or any collaborators you add)\n\ntypically you would make a repository public when it has been accepted for publication, or if you publish a pre-print\n\nyou can also make it public before this, but this is something to discuss with your collaborators"
+    "text": "3.1 Private or public\n\nyou should notice near the top right corner a button ‘Make Public’\n\nthis tells you that your project is currently private\nthis means nobody can see it but you (or any collaborators you add)\n\ntypically you would make a repository public when it has been accepted for publication, or if you publish a pre-print\n\nyou can also make it public before this, but this is something to discuss with your collaborators",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#contributors",
     "href": "slides/day4/osf-code_review.html#contributors",
     "title": "Publishing analyses + Peer code review",
     "section": "3.2 Contributors",
-    "text": "3.2 Contributors\n\nrepository contributors are typically co-authors or collaborators for a project\nclick on the ‘Contributors’ tab (top right of the screen)\n\nclick on ‘+ Add’, find my account, and add me as a collaborator with ‘Read’ rights\nmake sure the ‘Bibliographic Contributor’ button is checked\nthis just means that I will be included as bibliographic author if this repo is ever cited\n\ngo back to the project page, do you see any changes?"
+    "text": "3.2 Contributors\n\nrepository contributors are typically co-authors or collaborators for a project\nclick on the ‘Contributors’ tab (top right of the screen)\n\nclick on ‘+ Add’, find my account, and add me as a collaborator with ‘Read’ rights\nmake sure the ‘Bibliographic Contributor’ button is checked\nthis just means that I will be included as bibliographic author if this repo is ever cited\n\ngo back to the project page, do you see any changes?",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#adding-files",
     "href": "slides/day4/osf-code_review.html#adding-files",
     "title": "Publishing analyses + Peer code review",
     "section": "3.3 Adding files",
-    "text": "3.3 Adding files\n\nour purpose for creating an OSF project was to share our data and materials\n\nto do this, we navigate to the ‘Files’ tab\n\nrather unfortunately, we can only upload files (i.e., not entire folders)\n\nthis has the benefit of meaning our folder structure must be intentional\nbut the drawback that it’s quite tedious if you want to share a large project\n\nlet’s start by adding our data and scripts\n\nadd a folder called data\nand another folder called scripts or code, or whatever you prefer"
+    "text": "3.3 Adding files\n\nour purpose for creating an OSF project was to share our data and materials\n\nto do this, we navigate to the ‘Files’ tab\n\nrather unfortunately, we can only upload files (i.e., not entire folders)\n\nthis has the benefit of meaning our folder structure must be intentional\nbut the drawback that it’s quite tedious if you want to share a large project\n\nlet’s start by adding our data and scripts\n\nadd a folder called data\nand another folder called scripts or code, or whatever you prefer",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#adding-data",
     "href": "slides/day4/osf-code_review.html#adding-data",
     "title": "Publishing analyses + Peer code review",
     "section": "3.4 Adding data",
-    "text": "3.4 Adding data\n\nunder data, add the three csv files you presumably have in the same folder in your project (drag and drop them, or select the big green +)\n\ndata_lifetime_pilot.csv\ntidy_data_lifetime_pilot.csv\ntidy_data_lifetime_pilot_dictionary.csv"
+    "text": "3.4 Adding data\n\nunder data, add the csv file you presumably have in the same folder in your project (drag and drop, or select the big green +)\n\nchromy_et-al_2023_English_final.csv",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#adding-scripts",
     "href": "slides/day4/osf-code_review.html#adding-scripts",
     "title": "Publishing analyses + Peer code review",
     "section": "3.5 Adding scripts",
-    "text": "3.5 Adding scripts\n\nunder the scripts folder add the scripts where we worked with the data:\n\nour wrangling script\nour tables script\nour data visualisation script\n\n\n\n3.5.1 Adding PDF output\n\noptionally, you can also upload the PDF output produced by each script\n\nthis means that anybody viewing your project doesn’t have to download the Quarto scripts to see what was done (as they aren’t viewable in-browser)\n\n\n\n\n3.5.2 Structuring your scripts/ folder\n\nunlike the data folder, how you organise and name this folder on OSF is more flexible\n\nbecause we (likely) aren’t accessing these scripts from somewhere else in the project (unlike loading data from the data folder)\n\nyou can include them in sub-folders if you prefer\n\nthe structure of this folder is organisational, and not fundamental to reproducibility\nmore organised folders make it easier to navigate for someone not familiar with the project structure\nkeeping this structure identical to your actual project structure is also ideal for on-going larger projects, but it’s up to you\n\n\n\n\n\n\n\n\nChecklist: Share data and code\n\n\n\n\nAt this point, your OSF project should\n\nbe private (this is the default for a new project)\nhave me as a collaborator\ncontain the folders data/ and scripts/\n\nwhich in turn contain the 3 CSV files and 3 Quarto scripts\nideally scripts/ will also contain the 3 PDF script outputs"
+    "text": "3.5 Adding scripts\n\nunder the scripts folder add the scripts where we worked with the data\n\n\n3.5.1 Adding output files\n\nyou can also upload output produced by each script (e.g., HTML files)\noutputting PDF files makes this a bit easier, though\n\nanybody viewing your project doesn’t have to download the Quarto scripts to see what was done (as .qmd and .html files aren’t viewable in-browser on the OSF)\nthis also makes it easier to compare the reproduced analyses to the shared analyses, because re-rendering the downloaded script will replace the output file locally (but the OSF version will remain unchanged, of course)\nto do so you’ll need to have an LaTeX distribution on your machine\nor you could install tinytex\n\n\n\n\n3.5.2 Structuring your scripts/ folder\n\nunlike the data folder, how you organise and name the scripts/ folder on OSF is more flexible\n\nbecause we (likely) aren’t accessing these scripts from somewhere else in the project (unlike loading data from the data folder)\n\nyou can include them in sub-folders if you prefer\n\nthe structure of this folder is organisational, and not fundamental to reproducibility\nmore organised folders make it easier to navigate for someone not familiar with the project structure\nkeeping this structure identical to your actual project structure is also ideal for on-going larger projects, but it’s up to you\n\n\n\n\n\n\n\n\nChecklist: Share data and code\n\n\n\n\nAt this point, your OSF project should\n\nbe private (this is the default for a new project)\nhave me as a collaborator\ncontain the folders data/ and scripts/\n\nwhich in turn contain the CSV file and your Quarto script(s)\nideally scripts/ will also contain the output file(s)",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#download-osf-repo",
     "href": "slides/day4/osf-code_review.html#download-osf-repo",
     "title": "Publishing analyses + Peer code review",
     "section": "4.1 Download OSF repo",
-    "text": "4.1 Download OSF repo\n\nlet’s start by downloading our OSF repo\n\nfrom the project overview page, go to the ‘Files’ pane\nclick on ‘OSF Storage (Germany - Frankfurt)’\nClick ‘Download as zip’ button and store somewhere useful/rename as needed\n\n\n\n\n\n\n\n\n\n\nFigure 2: How to download an OSF repo"
+    "text": "4.1 Download OSF repo\n\nlet’s start by downloading our OSF repo\n\nfrom the project overview page, go to the ‘Files’ pane\nclick on ‘OSF Storage (Germany - Frankfurt)’\nClick ‘Download as zip’ button and store somewhere useful/rename as needed\n\n\n\n\n\n\n\n\n\n\nFigure 2: How to download an OSF repo",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#reproduce-your-analyses",
     "href": "slides/day4/osf-code_review.html#reproduce-your-analyses",
     "title": "Publishing analyses + Peer code review",
     "section": "4.2 Reproduce your analyses",
-    "text": "4.2 Reproduce your analyses\n\nfirst, close all R projects you currently have open\n\nthis is because RStudio might try to open your downloaded scripts in an already open RProject, which we don’t want\n\nnow, navigate to the zip you just downloaded and decompress it (double-click)\n\nselect a Quarto script from scripts/\ntry to run the script, does it run?\nprobably not…let’s discuss why"
+    "text": "4.2 Reproduce your analyses\n\nfirst, close all R projects you currently have open\n\nthis is because RStudio might try to open your downloaded scripts in an already open RProject, which we don’t want\n\nnow, navigate to the zip you just downloaded and decompress it (double-click)\n\nselect a Quarto script from scripts/\ntry to run the script, does it run?\nprobably not…let’s discuss why",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#improving-code-reproducibility",
     "href": "slides/day4/osf-code_review.html#improving-code-reproducibility",
     "title": "Publishing analyses + Peer code review",
     "section": "5.1 Improving code reproducibility",
-    "text": "5.1 Improving code reproducibility\n\nwhat structural dependecies do our scripts have?\n\ne.g., filepaths and folder names\n\nconsider, for example, how we accessed the data from our scripts\n\ndid we use setwd()?\ndid we use filepaths?\nno, we used the here() package within an R project\nthis meant we used our project root directory as our working directory\n\nso, we should, at minimum, also include the .Rproj file at the project root directory"
+    "text": "5.1 Improving code reproducibility\n\nwhat structural dependecies do our scripts have?\n\ne.g., filepaths and folder names\n\nconsider, for example, how we accessed the data from our scripts\n\ndid we use setwd()?\ndid we use filepaths?\nno, we used the here() package within an R project\nthis meant we used our project root directory as our working directory\n\nso, we should, at minimum, also include the .Rproj file at the project root directory",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#packages",
     "href": "slides/day4/osf-code_review.html#packages",
     "title": "Publishing analyses + Peer code review",
     "section": "5.2 Packages",
-    "text": "5.2 Packages\n\nincluded the .Rproj file won’t mean that the person who downloads it will also have our packages\n\ne.g., they might not have the here package, and won’t even be able to use our code to load in the data\n\nas we discussed some weeks ago, this is what the renv package does\n\nwe created project library, i.e., a lockfile (renv.lock) which is a project\n\n\n\n\n\n\n\n\nChecklist: Share renv.lock\n\n\n\nAdd the renv.lock file to your OSF project repo (in the project root directory)."
-  },
-  {
-    "objectID": "slides/day4/osf-code_review.html#auto-loaders",
-    "href": "slides/day4/osf-code_review.html#auto-loaders",
-    "title": "Publishing analyses + Peer code review",
-    "section": "5.3 Auto-loaders",
-    "text": "5.3 Auto-loaders\n\nwe also need to include our .Rprofile file\n\nthis is our auto-loader\nwhenever we open the R project, this file will be run\n\nit currently contains just source(\"renv/activate.R\")\n\nthis means: when you open the R project, run the renv/activate.R file\n\nso, we need to include our renv/activate.R file in our OSF repo\n\nincluding these two will automatically install the relevant version of renv\n\n\n\n\n\n\n\n\n.Rprofile in Finder\n\n\n\nSome files are usually invisible on a Mac, such as those that start with dot (like .Rprofile). This makes it difficult to simply drag and drop the .Rprofile file to the OSF. To make such files viewable in Finder, navigate to the relevant project folder and use the keyboard shortcut Ctrl + Shift + Dot. These files will then appear greyed out.\n\n\n\n\n\n\n\n\nFigure 3: Use the shortcut Ctrl + Shift + Dot to view hidden files on a Mac"
+    "text": "5.2 Packages\n\nincluded the .Rproj file won’t mean that the person who downloads it will also have our packages\n\ne.g., they might not have the here package, and won’t even be able to use our code to load in the data\n\nif you want to learn how to help others restore your exact package library (as long as they’re using the same version of R), go through the materials for Package Management\n\nand then this page from another course I gave to see how to share the relevant files",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#readme",
     "href": "slides/day4/osf-code_review.html#readme",
     "title": "Publishing analyses + Peer code review",
-    "section": "5.4 README",
-    "text": "5.4 README\n\nremember to update your README accordingly!\n\nthis can be updated as you add more to your project\n\nthe project README.md will ideally have information that is useful once the project is downloaded in its entirety\n\ne.g., brief info about the project/data\ndescription of the folder/file structure\nany info required for reproducibility\n\ne.g., anybody who downloads the project will need to run renv::restore() to restore your project library (but this will only work if they’re using the same R version!)\n\nso be sure to include that info!\n\n\nFor example, you could add something like this:\n\n**Reproduce analyses**: Once you open this project, `renv` will automatically be installed. After this is complete, you please run `renv::restore()` to restore the project package library. This will not affect the package versions you have already installed globally on your machine.\n\n\n\n\n\n\n\nChecklist: Share .Rprofile and renv/activate.R\n\n\n\n\nYour project should now have\n\n.Rprofile in the project root directory\nrenv/activate.R in the project root directory\n\ni.e., a folder renv/ in the root directory\nand the activate.R file in this renv/ folder\n\na README.md file in the root directory"
+    "section": "5.3 README",
+    "text": "5.3 README\n\nremember to update your README accordingly!\n\nthis can be updated as you add more to your project\n\nthe project README.md will ideally have information that is useful once the project is downloaded in its entirety\n\ne.g., brief info about the project/data\ndescription of the folder/file structure\nany info required for reproducibility (e.g., you could mention needing the here() package to read in data)",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#osf-repo-structure",
     "href": "slides/day4/osf-code_review.html#osf-repo-structure",
     "title": "Publishing analyses + Peer code review",
-    "section": "5.5 OSF repo structure",
-    "text": "5.5 OSF repo structure\n\nyour OSF project should look something like Figure 4\n\nN.B., there are more files under scripts/\n\n\n\n\n\n\n\n\n\n\nFigure 4: Your OSF should now look like this"
+    "section": "5.4 OSF repo structure",
+    "text": "5.4 OSF repo structure\n\nyour OSF project should look more of less like Figure 3 (with different data file name(s))\n\nthe .Rprofile, renv/ folder, and renv.lock files are not relevant if you didn’t work through the ‘Project Management’ materials\n\n\n\n\n\n\n\n\n\n\nFigure 3: Your OSF should now look like this",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#sharing-your-project",
     "href": "slides/day4/osf-code_review.html#sharing-your-project",
     "title": "Publishing analyses + Peer code review",
     "section": "6.1 Sharing your project",
-    "text": "6.1 Sharing your project\n\nwe need to share our project with others\n\nyour project is still private\nso you need to produce a link because the URL won’t work for non-contributors\n\nproduce a View-only link\n\nyou can do this in Settings (top right)\ngive an informative name (so you remember why you created this link)\n\nif you select Anonymize, your name will be removed from the project\n\nthis is useful for e.g., blind peer review\nbut will not remove your name from your scripts!"
+    "text": "6.1 Sharing your project\n\nwe need to share our project with others\n\nyour project is still private\nso you need to produce a link because the URL won’t work for non-contributors\n\nproduce a View-only link\n\nyou can do this in Settings (top right)\ngive an informative name (so you remember why you created this link)\n\nif you select Anonymize, your name will be removed from the project\n\nthis is useful for e.g., blind peer review\nbut will not remove your name from your scripts!",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day4/osf-code_review.html#swapping-project-urls",
     "href": "slides/day4/osf-code_review.html#swapping-project-urls",
     "title": "Publishing analyses + Peer code review",
     "section": "6.2 Swapping project URLs",
-    "text": "6.2 Swapping project URLs\n\ngo to Moodle and add your OSF repo URL\ngo to someone else’s OSF repo and download their project\n\ninspect the project metafiles (e.g., README)\ntry to reproduce the analyses, can you?\n\n\n\n\n\n\n\n\nAnonymising your scripts (optional)\n\n\n\n\nIf you have a relatively large project with your name at the beginning of multiple scripts, it can be tedious to manually remove it. And you might not be sure you actually took your name out of everything!\nThis can be used using RStudio’s Global Find:\n\npress Cmd+Shift+F\nin the pop-up, choose your filepath (for me: the OSF folder only) and hit enter\nthen toggle to ‘Replace’ when a tab pops up next to the Terminal\ntype in your replacement (e.g., [Anonymized for peer review]), and hit “Replace All”\n\nImportant: this will work for HTML and R/Quarto/Rmd scripts, but not for PDFs! so you might want to re-render all PDFs. As far as I can tell you have to re-render each PDF. If you’re working in a Quarto project (and not an .Rproj), then you can use quarto render subfoldername --to pdf in the Terminal to re-render only the OSF PDFs. We didn’t discuss Quarto projects in this course, however.\nAfter the manuscript is accepted, you can then reverse this step: use the Global Find to replace [Anonymized for peer review] with your name! This is why I suggest surrounding the phrase with [], it ensures you don’t accidentally replace the string ‘anonymized for peer review’ elsewhere in your files (e.g., maybe you wrote in some analysis plan “all scripts will be anonymized for peer review”, which would then be changed to “all scripts will be Daniela Palleschi” if I had replaced Anonymized for peer review with my name)."
+    "text": "6.2 Swapping project URLs\n\ngo to this link and add your OSF repo URL, making note of your row number\ngo to the OSF repo on the row below your own and download the project\n\ninspect the project metafiles (e.g., README)\ntry to reproduce the analyses, can you?\n\n\n\n\n\n\n\n\nAnonymising your scripts (optional)\n\n\n\n\nIf you have a relatively large project with your name at the beginning of multiple scripts, it can be tedious to manually remove it for double-blind peer review. And you might not be sure you actually took your name out of everything!\nThis can be used using RStudio’s Global Find:\n\npress Cmd+Shift+F\nadd your name (or anything else you want anonymised) under Find:\nunder Search in:, choose your filepath (for me: the OSF folder only) and hit enter\nthen toggle to ‘Replace’ when a tab pops up next to the Terminal\ntype in your replacement (e.g., [Anonymized for peer review]), and hit “Replace All”\n\nImportant: this will work for HTML and R/Quarto/Rmd scripts, but not for PDFs! so you might want to re-render all PDFs. As far as I can tell you have to re-render each PDF. If you’re working in a Quarto project (and not an .Rproj), then you can use quarto render subfoldername --to pdf in the Terminal to re-render only the OSF PDFs. We didn’t discuss Quarto projects in this course, however.\nAfter the manuscript is accepted, you can then reverse this step: use the Global Find to replace [Anonymized for peer review] with your name! This is why I suggest surrounding the phrase with [], it ensures you don’t accidentally replace the string ‘anonymized for peer review’ elsewhere in your files (e.g., maybe you wrote in some analysis plan “all scripts will be anonymized for peer review”, which would then be changed to “all scripts will be Daniela Palleschi” if I had replaced Anonymized for peer review with my name).",
+    "crumbs": [
+      "D. Palleschi",
+      "Day 4: Publishing and Peer Review",
+      "Publishing analyses + Peer code review"
+    ]
   },
   {
     "objectID": "slides/day2/rprojects/rprojects_slides.html#folder-structure",
